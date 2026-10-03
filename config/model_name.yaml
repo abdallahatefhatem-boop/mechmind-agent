@@ -1,0 +1,5 @@
+LLM:
+  name_Groq: "openai/gpt-oss-120b"
+  name_OpenRouter_google: "google/gemma-4-31b-it:free"
+  name_OpenRouter_groq: "qwen/qwen3.8-27b:free"
+  name_google: "gemini-flash-lite-latest"

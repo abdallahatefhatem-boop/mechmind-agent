@@ -1,0 +1,67 @@
+[ 2026-10-03 20:45:07,411 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-03 20:45:07,412 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-03 20:45:07,412 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-10-03 20:45:07,508 ] root - INFO - LLM initialized successfully.
+[ 2026-10-03 20:45:07,508 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-03 20:45:07,510 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-03 20:45:07,815 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-03 20:45:07,815 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-03 20:45:07,815 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-10-03 20:45:07,835 ] root - INFO - LLM initialized successfully.
+[ 2026-10-03 20:45:07,835 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-03 20:45:07,837 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-03 20:45:07,837 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-10-03 20:45:07,845 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-10-03 20:45:07,984 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-03 20:45:07,984 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-03 20:45:07,985 ] root - INFO - Initializing LLM from Groq...
+[ 2026-10-03 20:45:08,004 ] root - INFO - LLM initialized successfully.
+[ 2026-10-03 20:45:08,021 ] root - INFO - create llm node....
+[ 2026-10-03 20:45:08,022 ] root - INFO - create format_output_node....
+[ 2026-10-03 20:45:08,026 ] langsmith.client - DEBUG - LangSmith API URL https://api.smith.langchain.com resolved from LANGSMITH_ENDPOINT / LANGCHAIN_ENDPOINT environment variable
+[ 2026-10-03 20:45:08,028 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-03 20:45:08,039 ] groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-deb0a127-ef6c-4133-88d3-0729ab895c5a', 'json_data': {'messages': [{'role': 'system', 'content': "You are an AI assistant for mechanical engineering problem classification.\nYour task is to analyze the user's query and identify the **single problem type** that best matches the engineering problem.\nChoose exactly one problem type from the problem types defined in the system configuration.\nThe problem type must match one of the available keys in the configuration, such as:\n* `mechanics` * `unit_conversion` * `factor_of_safety` * `beam_stress` * `beam_deflection` * `column_buckling` * `fatigue_life` * `shaft_design` * `gear_design` * `bearing_life` * `spring_design` * `bolt_strength` * `pressure_vessel` * `fluid_flow` * `pump_power` * `thermodynamics` * `thermal_expansion` * `heat_transfer` * `hvac_load`\nUse the problem's description and context to determine the most appropriate type.\nReturn only the selected problem type key.\nDo not perform calculations. Do not extract parameters. Do not identify the operation. Do not provide explanations. Do not return the tool name. Do not create or invent a problem type that is not defined in the configuration.\n"}, {'role': 'user', 'content': 'A mechanical component experiences a force of 1.5 kN applied perpendicularly at a distance of 45 cm from the pivot point. Calculate the resulting torque\n'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.7}}
+[ 2026-10-03 20:45:08,040 ] groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+[ 2026-10-03 20:45:08,040 ] httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-03 20:45:08,133 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ede34a37a40>
+[ 2026-10-03 20:45:08,133 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7ede36021650> server_hostname='api.groq.com' timeout=None
+[ 2026-10-03 20:45:08,190 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ede1e53fbf0>
+[ 2026-10-03 20:45:08,191 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-03 20:45:08,191 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-03 20:45:08,192 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-03 20:45:08,192 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-03 20:45:08,192 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-03 20:45:08,284 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'Date', b'Sat, 03 Oct 2026 17:45:08 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'475'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'1000'), (b'x-ratelimit-remaining-tokens', b'8000'), (b'x-ratelimit-reset-requests', b'1ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_01m41dx9c9eqwst8v4et186ncr'), (b'x-should-retry', b'false'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=H.vUGLnqPP7xl27LGD2xD6eVxoOiT7nXo8Sl_dlKwSg-1791049508.209577-1.0.1.1-BNHcbt_wY3ZJbpJR_OiP9lAmaIMh9jFxFyt34CWVlEPMvMaOcWV0mmhYT0ptqn83t__yiDD4SINtIfVbAgsW0ZmNF6C_b4BF409q4F03gi3VIT6tj.C.N.jk7AYlIc1E; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 18:15:08 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'CF-RAY', b'a44dc2424cf1a611-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[ 2026-10-03 20:45:08,286 ] httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[ 2026-10-03 20:45:08,287 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-03 20:45:08,287 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-03 20:45:08,287 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-03 20:45:08,287 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-03 20:45:08,288 ] groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "429 Too Many Requests" Headers({'date': 'Sat, 03 Oct 2026 17:45:08 GMT', 'content-type': 'application/json', 'content-length': '475', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '1000', 'x-ratelimit-remaining-tokens': '8000', 'x-ratelimit-reset-requests': '1ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_01m41dx9c9eqwst8v4et186ncr', 'x-should-retry': 'false', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=H.vUGLnqPP7xl27LGD2xD6eVxoOiT7nXo8Sl_dlKwSg-1791049508.209577-1.0.1.1-BNHcbt_wY3ZJbpJR_OiP9lAmaIMh9jFxFyt34CWVlEPMvMaOcWV0mmhYT0ptqn83t__yiDD4SINtIfVbAgsW0ZmNF6C_b4BF409q4F03gi3VIT6tj.C.N.jk7AYlIc1E; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 18:15:08 GMT', 'strict-transport-security': 'max-age=15552000', 'cf-ray': 'a44dc2424cf1a611-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+[ 2026-10-03 20:45:08,288 ] groq._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/mg/my_venv/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1024, in request
+    response.raise_for_status()
+  File "/home/mg/my_venv/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+[ 2026-10-03 20:45:08,291 ] groq._base_client - DEBUG - Not retrying as header `x-should-retry` is set to `false`
+[ 2026-10-03 20:45:08,291 ] groq._base_client - DEBUG - Re-raising status error
+[ 2026-10-03 20:45:08,305 ] root - ERROR - Error occurred inside ask_llm function
+[ 2026-10-03 20:45:08,327 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+[ 2026-10-03 20:45:08,330 ] langsmith.client - DEBUG - Tracing control thread func compress parallel called
+[ 2026-10-03 20:45:08,381 ] langsmith.client - DEBUG - Handling batch in langsmith mode
+[ 2026-10-03 20:45:08,381 ] langsmith.client - DEBUG - Main thread is dead, stopping compression thread
+[ 2026-10-03 20:45:08,386 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-03 20:45:08,386 ] langsmith.client - DEBUG - Compression thread final flush: trace_count=0
+[ 2026-10-03 20:45:08,387 ] langsmith.client - DEBUG - Compression thread final flush: no data to send
+[ 2026-10-03 20:45:08,387 ] langsmith.client - DEBUG - Compressed traces control thread is shutting down
+[ 2026-10-03 20:45:08,779 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 20:45:08,780 ] langsmith.client - DEBUG - Main thread is dead, stopping tracing thread
+[ 2026-10-03 20:45:08,780 ] langsmith.client - DEBUG - Tracing thread draining queue on exit: qsize=0
+[ 2026-10-03 20:45:08,781 ] langsmith.client - DEBUG - Tracing control thread is shutting down
+[ 2026-10-03 20:45:08,781 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 20:45:08,783 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 20:45:08,900 ] httpcore.connection - DEBUG - close.started
+[ 2026-10-03 20:45:08,900 ] httpcore.connection - DEBUG - close.complete

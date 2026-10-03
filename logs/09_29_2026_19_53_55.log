@@ -1,0 +1,37 @@
+[ 2026-09-29 19:53:55,279 ] root - INFO - Reading model configuration from yaml...
+[ 2026-09-29 19:53:55,280 ] root - INFO - Model configuration loaded successfully.
+[ 2026-09-29 19:53:55,280 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-09-29 19:53:55,408 ] root - INFO - LLM initialized successfully.
+[ 2026-09-29 19:53:55,409 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-09-29 19:53:55,410 ] root - INFO - Prompts loaded successfully.
+[ 2026-09-29 19:53:55,416 ] groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-6ec4087b-4b3f-4281-9e94-dc7f7e971826', 'json_data': {'messages': [{'role': 'system', 'content': "You are an AI assistant for mechanical engineering problem classification.\nYour task is to analyze the user's query and identify the **single problem type** that best matches the engineering problem.\nChoose exactly one problem type from the problem types defined in the system configuration.\nThe problem type must match one of the available keys in the configuration, such as:\n* `mechanics` * `unit_conversion` * `factor_of_safety` * `beam_stress` * `beam_deflection` * `column_buckling` * `fatigue_life` * `shaft_design` * `gear_design` * `bearing_life` * `spring_design` * `bolt_strength` * `pressure_vessel` * `fluid_flow` * `pump_power` * `thermodynamics` * `thermal_expansion` * `heat_transfer` * `hvac_load`\nUse the problem's description and context to determine the most appropriate type.\nReturn only the selected problem type key.\nDo not perform calculations. Do not extract parameters. Do not identify the operation. Do not provide explanations. Do not return the tool name. Do not create or invent a problem type that is not defined in the configuration.\n"}, {'role': 'user', 'content': 'A steel rod has a cross-sectional area of 200 mm² and is subjected to a 10 kN force. Calculate the stress.'}], 'model': 'google/gemma-4-31b-it:free', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.7}}
+[ 2026-09-29 19:53:55,417 ] groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+[ 2026-09-29 19:53:55,418 ] httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-09-29 19:53:55,465 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x71350784fa40>
+[ 2026-09-29 19:53:55,465 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x713506b014d0> server_hostname='api.groq.com' timeout=None
+[ 2026-09-29 19:53:55,523 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x71350a332ae0>
+[ 2026-09-29 19:53:55,524 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-09-29 19:53:55,525 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-09-29 19:53:55,525 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-09-29 19:53:55,525 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-09-29 19:53:55,526 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-09-29 19:53:55,605 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Date', b'Tue, 29 Sep 2026 16:53:55 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-request-id', b'req_01m3q1cmr1eemrn9972bdhsfhn'), (b'set-cookie', b'__cf_bm=sXS3cFxe8UvptNUv2H5E2XDzHC7wqXhKiuWO5PSp74w-1790700835.5667782-1.0.1.1-cE8VjfqXLgKkZ.SD0HMJt88LEbsOkc5PFcCJiKtvj2J55sazDQQp3yOpg3keyCqBJ0gOBg3Luv1qOcWjGnxq5VO_Up2BgYTVFUTd6H5xtC46npTtrMCH7CJv5vhxH4Z7; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Tue, 29 Sep 2026 17:23:55 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a42c81be4c455b7d-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[ 2026-09-29 19:53:55,607 ] httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 404 Not Found"
+[ 2026-09-29 19:53:55,608 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-09-29 19:53:55,608 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-09-29 19:53:55,609 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-09-29 19:53:55,609 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-09-29 19:53:55,609 ] groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "404 Not Found" Headers({'date': 'Tue, 29 Sep 2026 16:53:55 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-request-id': 'req_01m3q1cmr1eemrn9972bdhsfhn', 'set-cookie': '__cf_bm=sXS3cFxe8UvptNUv2H5E2XDzHC7wqXhKiuWO5PSp74w-1790700835.5667782-1.0.1.1-cE8VjfqXLgKkZ.SD0HMJt88LEbsOkc5PFcCJiKtvj2J55sazDQQp3yOpg3keyCqBJ0gOBg3Luv1qOcWjGnxq5VO_Up2BgYTVFUTd6H5xtC46npTtrMCH7CJv5vhxH4Z7; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Tue, 29 Sep 2026 17:23:55 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a42c81be4c455b7d-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+[ 2026-09-29 19:53:55,609 ] groq._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/home/mg/my_venv/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1024, in request
+    response.raise_for_status()
+  File "/home/mg/my_venv/.venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+[ 2026-09-29 19:53:55,615 ] groq._base_client - DEBUG - Not retrying
+[ 2026-09-29 19:53:55,615 ] groq._base_client - DEBUG - Re-raising status error
+[ 2026-09-29 19:53:55,616 ] root - ERROR - Error occurred inside ask_llm function
+[ 2026-09-29 19:53:55,718 ] httpcore.connection - DEBUG - close.started
+[ 2026-09-29 19:53:55,718 ] httpcore.connection - DEBUG - close.complete

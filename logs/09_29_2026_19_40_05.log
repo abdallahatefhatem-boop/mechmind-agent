@@ -1,0 +1,14 @@
+[ 2026-09-29 19:40:05,325 ] root - INFO - calling api key.....
+[ 2026-09-29 19:40:05,325 ] root - INFO - API Key called
+[ 2026-09-29 19:40:05,325 ] root - INFO - read the model name from yaml
+[ 2026-09-29 19:40:05,326 ] root - INFO - The file readed correctly
+[ 2026-09-29 19:40:05,326 ] root - INFO - call LLM from openRouter
+[ 2026-09-29 19:40:05,455 ] root - INFO - success ....call llm .
+[ 2026-09-29 19:40:05,455 ] root - INFO - read prompt from config/Prompt.yaml
+[ 2026-09-29 19:40:05,455 ] root - INFO - read prompt DONE!
+[ 2026-09-29 19:40:05,456 ] root - INFO - creat chain
+[ 2026-09-29 19:40:05,456 ] root - INFO - Done creat chain
+[ 2026-09-29 19:40:05,456 ] root - INFO - input text to extract problem  using ask_llm from src.backend.Extract_prob_type.py 
+[ 2026-09-29 19:40:05,456 ] root - INFO - Done return response from ask_llm 
+[ 2026-09-29 19:40:05,460 ] root - INFO - creat chain
+[ 2026-09-29 19:40:05,460 ] root - INFO - Done creat chain

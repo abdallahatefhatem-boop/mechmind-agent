@@ -1,0 +1,21 @@
+[ 2026-09-29 19:42:39,900 ] root - INFO - Reading model configuration from yaml...
+[ 2026-09-29 19:42:39,901 ] root - INFO - Model configuration loaded successfully.
+[ 2026-09-29 19:42:39,901 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-09-29 19:42:39,975 ] root - INFO - LLM initialized successfully.
+[ 2026-09-29 19:42:39,975 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-09-29 19:42:39,976 ] root - INFO - Prompts loaded successfully.
+[ 2026-09-29 19:42:40,121 ] httpcore.connection - DEBUG - connect_tcp.started host='openrouter.ai' port=443 local_address=None timeout=None socket_options=None
+[ 2026-09-29 19:42:40,164 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x73064f36ad80>
+[ 2026-09-29 19:42:40,164 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x73064fc20ad0> server_hostname='openrouter.ai' timeout=None
+[ 2026-09-29 19:42:40,218 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x73064f480680>
+[ 2026-09-29 19:42:40,218 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-09-29 19:42:40,219 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-09-29 19:42:40,220 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-09-29 19:42:40,220 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-09-29 19:42:40,220 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-09-29 19:42:40,573 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 29 Sep 2026 16:42:40 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Access-Control-Allow-Origin', b'*'), (b'X-Generation-Id', b'gen-1790700160-Cqh8BGt6Lbaw763EaOqT'), (b'access-control-expose-headers', b'X-Generation-Id,X-Provider-Name,request-id,cf-ray'), (b'set-cookie', b'__cf_bm=8qlo0vRfn1YN78Xy7GxeZdjEeyduRUbLxcC6xWPpDIo-1790700160.2892528-1.0.1.1-wPcHNV7Iba6ZpqPSoeCoZDEJ0Pb7.L4Rfqk8ptXlakr4GrTV.DPuecDbnUm3sgK.71Bz4tpu6fYNbITL6TWKCoi1nbEOMy9CLDtc1as5W.tWIR2K10ANFJpbB0.tONDe; HttpOnly; SameSite=None; Secure; Path=/; Domain=openrouter.ai; Expires=Tue, 29 Sep 2026 17:12:40 GMT'), (b'Permissions-Policy', b'payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com" "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")'), (b'Referrer-Policy', b'no-referrer, strict-origin-when-cross-origin'), (b'X-Content-Type-Options', b'nosniff'), (b'Content-Encoding', b'gzip'), (b'Server', b'cloudflare'), (b'CF-RAY', b'a42c7141c8c62da8-MRS')])
+[ 2026-09-29 19:42:40,574 ] httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-09-29 19:42:40,574 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-09-29 19:42:43,503 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-09-29 19:42:43,504 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-09-29 19:42:43,504 ] httpcore.http11 - DEBUG - response_closed.complete

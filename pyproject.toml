@@ -1,0 +1,15 @@
+[project]
+name = "my-venv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "langchain>=1.4.2",
+    "langchain-google-genai>=4.4.0",
+    "langchain-openrouter>=0.2.9",
+    "numpy>=2.5.3",
+    "typesafe-sdk>=0.7.2",
+    "typing>=3.10.0.0",
+]

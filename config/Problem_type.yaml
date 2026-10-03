@@ -1,0 +1,294 @@
+# Engineering problem definitions
+# The agent uses this file to identify the problem type
+# and select the appropriate engineering tool.
+
+problems:
+
+  # ==========================================================
+  # ENGINEERING FUNDAMENTALS
+  # ==========================================================
+
+  mechanics:
+    name: "Mechanical Engineering Calculator"
+    description: "Basic mechanical engineering calculations"
+    category: "fundamentals"
+
+    supported_operations:
+      - force
+      - mass
+      - acceleration
+      - torque
+      - work
+      - energy
+      - power
+      - stress
+      - strain
+
+    tool: "mechanics_calculator"
+
+
+  unit_conversion:
+    name: "Engineering Unit Conversion"
+    description: "Convert between engineering units"
+    category: "fundamentals"
+
+    supported_operations:
+      - length
+      - mass
+      - force
+      - pressure
+      - energy
+      - power
+      - temperature
+      - velocity
+      - torque
+
+    tool: "unit_converter"
+
+
+  factor_of_safety:
+    name: "Factor of Safety Calculator"
+    description: "Calculate factor of safety for engineering components"
+    category: "fundamentals"
+
+    supported_operations:
+      - yield_strength
+      - ultimate_strength
+      - applied_stress
+
+    tool: "factor_of_safety"
+
+
+  # ==========================================================
+  # STRUCTURAL / SOLID MECHANICS
+  # ==========================================================
+
+  beam_stress:
+    name: "Beam Stress Analyzer"
+    description: "Calculate stresses in beams"
+    category: "structural"
+
+    supported_operations:
+      - bending_stress
+      - shear_stress
+      - bending_moment
+      - shear_force
+
+    tool: "beam_stress"
+
+
+  beam_deflection:
+    name: "Beam Deflection Solver"
+    description: "Calculate beam deflection"
+    category: "structural"
+
+    supported_operations:
+      - deflection
+      - slope
+
+    tool: "beam_deflection"
+
+
+  column_buckling:
+    name: "Column Buckling Calculator"
+    description: "Calculate critical buckling load using Euler buckling"
+    category: "structural"
+
+    supported_operations:
+      - critical_load
+      - buckling_stress
+
+    tool: "column_buckling"
+
+
+  fatigue_life:
+    name: "Fatigue Life Calculator"
+    description: "Estimate fatigue life under cyclic loading"
+    category: "structural"
+
+    supported_operations:
+      - fatigue_life
+      - stress_amplitude
+      - endurance_limit
+
+    tool: "fatigue_life"
+
+
+  # ==========================================================
+  # MACHINE DESIGN
+  # ==========================================================
+
+  shaft_design:
+    name: "Shaft Design Calculator"
+    description: "Design shafts under torque and bending loads"
+    category: "machine_design"
+
+    supported_operations:
+      - shaft_diameter
+      - torsional_stress
+      - shear_stress
+      - factor_of_safety
+
+    tool: "shaft_design"
+
+
+  gear_design:
+    name: "Gear Design Calculator"
+    description: "Calculate gear speed, torque and gear ratio"
+    category: "machine_design"
+
+    supported_operations:
+      - gear_ratio
+      - output_speed
+      - output_torque
+      - power
+
+    tool: "gear_design"
+
+
+  bearing_life:
+    name: "Bearing Life Calculator"
+    description: "Calculate bearing life under applied loads"
+    category: "machine_design"
+
+    supported_operations:
+      - bearing_life
+      - equivalent_load
+      - dynamic_load_rating
+
+    tool: "bearing_life"
+
+
+  spring_design:
+    name: "Spring Design Calculator"
+    description: "Calculate spring force, deflection and stiffness"
+    category: "machine_design"
+
+    supported_operations:
+      - spring_force
+      - spring_deflection
+      - spring_rate
+
+    tool: "spring_design"
+
+
+  bolt_strength:
+    name: "Fastener / Bolt Strength Calculator"
+    description: "Calculate bolt stress and strength"
+    category: "machine_design"
+
+    supported_operations:
+      - tensile_stress
+      - shear_stress
+      - bolt_strength
+      - preload
+
+    tool: "bolt_strength"
+
+
+  # ==========================================================
+  # PRESSURE & FLUID SYSTEMS
+  # ==========================================================
+
+  pressure_vessel:
+    name: "Pressure Vessel Calculator"
+    description: "Calculate stresses and required thickness for pressure vessels"
+    category: "fluids"
+
+    supported_operations:
+      - hoop_stress
+      - longitudinal_stress
+      - wall_thickness
+
+    tool: "pressure_vessel"
+
+
+  fluid_flow:
+    name: "Fluid Flow Calculator"
+    description: "Calculate fluid flow parameters and pressure losses"
+    category: "fluids"
+
+    supported_operations:
+      - reynolds_number
+      - pressure_loss
+      - flow_rate
+      - velocity
+
+    tool: "fluid_flow"
+
+
+  pump_power:
+    name: "Pump Power Calculator"
+    description: "Calculate hydraulic and shaft power required by pumps"
+    category: "fluids"
+
+    supported_operations:
+      - hydraulic_power
+      - shaft_power
+      - pump_head
+
+    tool: "pump_power"
+
+
+  # ==========================================================
+  # THERMODYNAMICS & HEAT TRANSFER
+  # ==========================================================
+
+  thermodynamics:
+    name: "Thermodynamics Solver"
+    description: "Solve basic thermodynamic problems"
+    category: "thermal"
+
+    supported_operations:
+      - work
+      - heat
+      - internal_energy
+      - enthalpy
+      - efficiency
+
+    tool: "thermodynamics"
+
+
+  thermal_expansion:
+    name: "Thermal Expansion Calculator"
+    description: "Calculate dimensional changes due to temperature"
+    category: "thermal"
+
+    supported_operations:
+      - linear_expansion
+      - thermal_strain
+      - dimensional_change
+
+    tool: "thermal_expansion"
+
+
+  heat_transfer:
+    name: "Heat Transfer Calculator"
+    description: "Calculate conduction, convection and radiation"
+    category: "thermal"
+
+    supported_operations:
+      - conduction
+      - convection
+      - radiation
+      - heat_rate
+
+    tool: "heat_transfer"
+
+
+  # ==========================================================
+  # HVAC
+  # ==========================================================
+
+  hvac_load:
+    name: "HVAC Load Estimator"
+    description: "Estimate heating and cooling loads"
+    category: "hvac"
+
+    supported_operations:
+      - cooling_load
+      - heating_load
+      - sensible_heat
+      - latent_heat
+
+    tool: "hvac_load"

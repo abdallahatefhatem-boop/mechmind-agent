@@ -1,0 +1,42 @@
+[ 2026-10-03 23:24:28,555 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-03 23:24:28,555 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-03 23:24:28,626 ] langsmith.client - DEBUG - LangSmith API URL https://api.smith.langchain.com resolved from LANGSMITH_ENDPOINT / LANGCHAIN_ENDPOINT environment variable
+[ 2026-10-03 23:24:28,629 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-03 23:24:28,635 ] groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-a36bb1ba-c408-4384-b2b5-207946ce08a6', 'json_data': {'messages': [{'role': 'user', 'content': 'what is ai'}], 'model': 'openai/gpt-oss-120b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.7}}
+[ 2026-10-03 23:24:28,636 ] groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+[ 2026-10-03 23:24:28,636 ] httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-03 23:24:28,695 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ebaff29bec0>
+[ 2026-10-03 23:24:28,695 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7ebaff373550> server_hostname='api.groq.com' timeout=None
+[ 2026-10-03 23:24:28,755 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7ebaff29bbf0>
+[ 2026-10-03 23:24:28,756 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:24:28,757 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-03 23:24:28,757 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:24:28,757 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-03 23:24:28,757 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:24:29,024 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+[ 2026-10-03 23:24:29,026 ] langsmith.client - DEBUG - Tracing control thread func compress parallel called
+[ 2026-10-03 23:24:29,076 ] langsmith.client - DEBUG - Handling batch in langsmith mode
+[ 2026-10-03 23:24:29,310 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 23:24:30,975 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 03 Oct 2026 20:24:30 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'7723'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'2.077s'), (b'x-request-id', b'req_01m41q11vre3n9pvy7wjmkp4sp'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'__cf_bm=gQY7WE3q2d97hsjBosUEqv2r.2Klp.sGQGyQzrJ_ALM-1791059068.7769184-1.0.1.1-HsVrHxln5GTQcA3SUoSVZipmzyZzDGXXKwUyhuci88CmK1ELEXVH.etfgvJgvIHvioR3ThSA27sGRkx48T.UdQ38KyzVSvBQu5yXjJV0YmijTdfVlQZaWrx9K7QLYbNJ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 20:54:30 GMT'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a44eababd9d5e175-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[ 2026-10-03 23:24:30,977 ] httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-10-03 23:24:30,978 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:24:30,979 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-03 23:24:30,979 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-03 23:24:30,979 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-03 23:24:30,979 ] groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Sat, 03 Oct 2026 20:24:30 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '7723', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '2.077s', 'x-request-id': 'req_01m41q11vre3n9pvy7wjmkp4sp', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=gQY7WE3q2d97hsjBosUEqv2r.2Klp.sGQGyQzrJ_ALM-1791059068.7769184-1.0.1.1-HsVrHxln5GTQcA3SUoSVZipmzyZzDGXXKwUyhuci88CmK1ELEXVH.etfgvJgvIHvioR3ThSA27sGRkx48T.UdQ38KyzVSvBQu5yXjJV0YmijTdfVlQZaWrx9K7QLYbNJ; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 20:54:30 GMT', 'strict-transport-security': 'max-age=15552000', 'content-encoding': 'gzip', 'cf-ray': 'a44eababd9d5e175-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+[ 2026-10-03 23:24:31,039 ] langsmith.client - DEBUG - Compressed frame committed to ['https://api.smith.langchain.com']
+[ 2026-10-03 23:24:31,041 ] langsmith.client - DEBUG - Main thread is dead, stopping compression thread
+[ 2026-10-03 23:24:31,041 ] langsmith.client - DEBUG - Compression thread final flush: trace_count=1
+[ 2026-10-03 23:24:31,042 ] langsmith.client - DEBUG - Compression thread final flush: sending 3727 bytes
+[ 2026-10-03 23:24:31,042 ] langsmith.client - DEBUG - Compression thread final flush: thread pool shutdown, sending synchronously
+[ 2026-10-03 23:24:31,042 ] langsmith.client - DEBUG - Sending compressed multipart request with context: trace=01a10370-86d4-7103-8894-cd9a4700e1af,id=01a10370-86d4-7103-8894-cd9a4700e1af
+[ 2026-10-03 23:24:31,064 ] langsmith.client - DEBUG - Main thread is dead, stopping tracing thread
+[ 2026-10-03 23:24:31,065 ] langsmith.client - DEBUG - Tracing thread draining queue on exit: qsize=0
+[ 2026-10-03 23:24:31,065 ] langsmith.client - DEBUG - Tracing control thread is shutting down
+[ 2026-10-03 23:24:31,286 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 23:24:31,287 ] langsmith.client - DEBUG - Compression thread final flush: sync send completed
+[ 2026-10-03 23:24:31,287 ] langsmith.client - DEBUG - Compressed traces control thread is shutting down
+[ 2026-10-03 23:24:31,287 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 23:24:31,290 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 23:24:31,417 ] httpcore.connection - DEBUG - close.started
+[ 2026-10-03 23:24:31,417 ] httpcore.connection - DEBUG - close.complete

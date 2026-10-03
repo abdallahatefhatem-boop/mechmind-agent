@@ -1,0 +1,7 @@
+[ 2026-09-28 22:01:17,833 ] root - INFO - calling api key.....
+[ 2026-09-28 22:01:17,834 ] root - INFO - API Key called
+[ 2026-09-28 22:01:17,834 ] root - INFO - read the model name from yaml
+[ 2026-09-28 22:01:17,836 ] root - INFO - The file readed correctly
+[ 2026-09-28 22:01:17,836 ] root - INFO - call LLM
+[ 2026-09-28 22:01:18,066 ] root - INFO - success ....call llm .
+[ 2026-09-28 22:01:18,066 ] root - INFO - read prompt from config/Prompt.yaml

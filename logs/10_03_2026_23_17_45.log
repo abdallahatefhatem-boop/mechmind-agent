@@ -1,0 +1,86 @@
+[ 2026-10-03 23:17:45,700 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-03 23:17:45,701 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-03 23:17:45,701 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-03 23:17:45,703 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-03 23:17:45,703 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-10-03 23:17:45,712 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-10-03 23:17:46,054 ] root - INFO - create llm node....
+[ 2026-10-03 23:17:46,055 ] root - INFO - create format_output_node....
+[ 2026-10-03 23:17:46,061 ] langsmith.client - DEBUG - LangSmith API URL https://api.smith.langchain.com resolved from LANGSMITH_ENDPOINT / LANGCHAIN_ENDPOINT environment variable
+[ 2026-10-03 23:17:46,064 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-03 23:17:46,077 ] groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-50f1d39a-93f7-4022-9b9b-8120d2ec57b3', 'json_data': {'messages': [{'role': 'system', 'content': "You are an AI assistant for mechanical engineering problem classification.\nYour task is to analyze the user's query and identify the **single problem type** that best matches the engineering problem.\nChoose exactly one problem type from the problem types defined in the system configuration.\nThe problem type must match one of the available keys in the configuration, such as:\n* `mechanics` * `unit_conversion` * `factor_of_safety` * `beam_stress` * `beam_deflection` * `column_buckling` * `fatigue_life` * `shaft_design` * `gear_design` * `bearing_life` * `spring_design` * `bolt_strength` * `pressure_vessel` * `fluid_flow` * `pump_power` * `thermodynamics` * `thermal_expansion` * `heat_transfer` * `hvac_load`\nUse the problem's description and context to determine the most appropriate type.\nReturn only the selected problem type key.\nDo not perform calculations. Do not extract parameters. Do not identify the operation. Do not provide explanations. Do not return the tool name. Do not create or invent a problem type that is not defined in the configuration.\n"}, {'role': 'user', 'content': 'A mechanical component experiences a force of 1.5 kN applied perpendicularly at a distance of 45 cm from the pivot point. Calculate the resulting torque\n'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.7}}
+[ 2026-10-03 23:17:46,078 ] groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+[ 2026-10-03 23:17:46,079 ] httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-03 23:17:46,123 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc2443c2f0>
+[ 2026-10-03 23:17:46,123 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x74fc3ac167d0> server_hostname='api.groq.com' timeout=None
+[ 2026-10-03 23:17:46,168 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc245f7e60>
+[ 2026-10-03 23:17:46,168 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,169 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-03 23:17:46,169 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,169 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-03 23:17:46,169 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,294 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 03 Oct 2026 20:17:46 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'7551'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'3.367s'), (b'x-request-id', b'req_01m41pmrpyenm9ttdd2sjve8g6'), (b'set-cookie', b'__cf_bm=94oLv6dZTK9.W4CDWUa3j17dt.E6Xglb159p_LUG0AI-1791058666.1902509-1.0.1.1-vHcx3fdp3zYslp1kFmN6u2vKstBeJaL4c8Zg3JpE0lY.n8i1SQ.uaUAFL1Zzv46JOkM0SERgR48deXhOJhpiqHOxyL_4rjQZtkSuCO8R.0jiSp5.rz4YoA9S9FRjn0nY; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 20:47:46 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a44ea1d7aaa30524-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[ 2026-10-03 23:17:46,297 ] httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-10-03 23:17:46,297 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,298 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-03 23:17:46,298 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-03 23:17:46,299 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-03 23:17:46,299 ] groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Sat, 03 Oct 2026 20:17:46 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '7551', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '3.367s', 'x-request-id': 'req_01m41pmrpyenm9ttdd2sjve8g6', 'set-cookie': '__cf_bm=94oLv6dZTK9.W4CDWUa3j17dt.E6Xglb159p_LUG0AI-1791058666.1902509-1.0.1.1-vHcx3fdp3zYslp1kFmN6u2vKstBeJaL4c8Zg3JpE0lY.n8i1SQ.uaUAFL1Zzv46JOkM0SERgR48deXhOJhpiqHOxyL_4rjQZtkSuCO8R.0jiSp5.rz4YoA9S9FRjn0nY; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Sat, 03 Oct 2026 20:47:46 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a44ea1d7aaa30524-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+[ 2026-10-03 23:17:46,383 ] google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+[ 2026-10-03 23:17:46,383 ] google_genai.models - WARNING - Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+[ 2026-10-03 23:17:46,410 ] httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-03 23:17:46,460 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc2443ca40>
+[ 2026-10-03 23:17:46,460 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x74fc3ab15550> server_hostname='generativelanguage.googleapis.com' timeout=None
+[ 2026-10-03 23:17:46,498 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+[ 2026-10-03 23:17:46,499 ] langsmith.client - DEBUG - Tracing control thread func compress parallel called
+[ 2026-10-03 23:17:46,535 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc2443c4a0>
+[ 2026-10-03 23:17:46,535 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,536 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-03 23:17:46,536 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,536 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-03 23:17:46,536 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:46,549 ] langsmith.client - DEBUG - Handling batch in langsmith mode
+[ 2026-10-03 23:17:46,846 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 23:17:47,542 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'X-Gemini-Service-Tier', b'standard'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Sat, 03 Oct 2026 20:17:47 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=957'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+[ 2026-10-03 23:17:47,543 ] httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[ 2026-10-03 23:17:47,543 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:47,544 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-03 23:17:47,544 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-03 23:17:47,545 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-03 23:17:47,547 ] langsmith.client - DEBUG - Compressed frame committed to ['https://api.smith.langchain.com']
+[ 2026-10-03 23:17:47,702 ] httpcore.connection - DEBUG - connect_tcp.started host='openrouter.ai' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-03 23:17:47,746 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc21ffdf70>
+[ 2026-10-03 23:17:47,746 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x74fc381fd0d0> server_hostname='openrouter.ai' timeout=None
+[ 2026-10-03 23:17:47,795 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x74fc21ffe060>
+[ 2026-10-03 23:17:47,795 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:47,796 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-03 23:17:47,796 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:47,797 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-03 23:17:47,797 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:48,060 ] langsmith.client - DEBUG - Sending compressed multipart request with context: trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-6360-7ba1-9122-6fa562063a3a; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681c-7d81-add7-e50c5190f626; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681c-7d81-add7-e50c5190f626; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-635e-7261-8dcc-0fce2c432f03; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-635d-7c30-9284-77cf8d338b66; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681d-7510-b8ac-3304b4f86761; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681e-7c31-a029-863a621852bf
+[ 2026-10-03 23:17:48,195 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'Date', b'Sat, 03 Oct 2026 20:17:48 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Expose-Headers', b'X-Generation-Id,X-Provider-Name,request-id,cf-ray'), (b'X-Generation-Id', b'gen-1791058667-4b8DSucimXVZ4kvfQ0BT'), (b'set-cookie', b'__cf_bm=VYRJsC1LaXuFJxYfQZeEUHGLe1RHF6DmGsVngO5dQmw-1791058667.816399-1.0.1.1-_wDA.CoX6jxLrA664iSNkFq9wcXaIMnR.H3sfLVPoTkWP0ficR.3pK.J8Jwj.yIVNKTiUSGxz_.DxtWnXb15L8q1up8Mmbkt1z9eJx8ebJs_D4kUE4uRW2Qj1fLx_O3g; HttpOnly; SameSite=None; Secure; Path=/; Domain=openrouter.ai; Expires=Sat, 03 Oct 2026 20:47:48 GMT'), (b'Permissions-Policy', b'payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com" "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")'), (b'Referrer-Policy', b'no-referrer, strict-origin-when-cross-origin'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'a44ea1e1dd64e276-MRS')])
+[ 2026-10-03 23:17:48,196 ] httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[ 2026-10-03 23:17:48,197 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-03 23:17:48,197 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-03 23:17:48,197 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-03 23:17:48,197 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-03 23:17:48,214 ] langsmith.client - DEBUG - Compressed frame committed to ['https://api.smith.langchain.com']
+[ 2026-10-03 23:17:48,215 ] root - ERROR - Error occurred inside chat_node
+[ 2026-10-03 23:17:48,264 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 23:17:48,265 ] langsmith.client - DEBUG - Main thread is dead, stopping compression thread
+[ 2026-10-03 23:17:48,265 ] langsmith.client - DEBUG - Compression thread final flush: trace_count=3
+[ 2026-10-03 23:17:48,266 ] langsmith.client - DEBUG - Compression thread final flush: sending 4955 bytes
+[ 2026-10-03 23:17:48,266 ] langsmith.client - DEBUG - Compression thread final flush: thread pool shutdown, sending synchronously
+[ 2026-10-03 23:17:48,266 ] langsmith.client - DEBUG - Sending compressed multipart request with context: trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681e-7c31-a029-863a621852bf; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-681d-7510-b8ac-3304b4f86761; trace=01a1036a-624f-72b1-9b58-dd03fe0fd597,id=01a1036a-624f-72b1-9b58-dd03fe0fd597
+[ 2026-10-03 23:17:48,352 ] langsmith.client - DEBUG - Main thread is dead, stopping tracing thread
+[ 2026-10-03 23:17:48,353 ] langsmith.client - DEBUG - Tracing thread draining queue on exit: qsize=0
+[ 2026-10-03 23:17:48,353 ] langsmith.client - DEBUG - Tracing control thread is shutting down
+[ 2026-10-03 23:17:48,469 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-03 23:17:48,470 ] langsmith.client - DEBUG - Compression thread final flush: sync send completed
+[ 2026-10-03 23:17:48,471 ] langsmith.client - DEBUG - Compressed traces control thread is shutting down
+[ 2026-10-03 23:17:48,471 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 23:17:48,473 ] langsmith.client - DEBUG - Closing Client.session
+[ 2026-10-03 23:17:48,626 ] httpcore.connection - DEBUG - close.started
+[ 2026-10-03 23:17:48,627 ] httpcore.connection - DEBUG - close.complete
+[ 2026-10-03 23:17:48,627 ] httpcore.connection - DEBUG - close.started
+[ 2026-10-03 23:17:48,627 ] httpcore.connection - DEBUG - close.complete

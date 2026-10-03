@@ -1,0 +1,53 @@
+[ 2026-09-29 22:06:26,690 ] root - INFO - Reading model configuration from yaml...
+[ 2026-09-29 22:06:26,691 ] root - INFO - Model configuration loaded successfully.
+[ 2026-09-29 22:06:26,691 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-09-29 22:06:26,795 ] root - INFO - LLM initialized successfully.
+[ 2026-09-29 22:06:26,795 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-09-29 22:06:26,797 ] root - INFO - Prompts loaded successfully.
+[ 2026-09-29 22:06:27,121 ] root - INFO - Reading model configuration from yaml...
+[ 2026-09-29 22:06:27,122 ] root - INFO - Model configuration loaded successfully.
+[ 2026-09-29 22:06:27,122 ] root - INFO - Initializing LLM from OpenRouter...
+[ 2026-09-29 22:06:27,142 ] root - INFO - LLM initialized successfully.
+[ 2026-09-29 22:06:27,142 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-09-29 22:06:27,144 ] root - INFO - Prompts loaded successfully.
+[ 2026-09-29 22:06:27,144 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-09-29 22:06:27,153 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-09-29 22:06:27,159 ] groq._base_client - DEBUG - Request options: {'method': 'post', 'url': '/openai/v1/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-58c6a647-61ec-4998-8afd-b2e0e942a3e0', 'json_data': {'messages': [{'role': 'system', 'content': "You are an AI assistant for mechanical engineering problem classification.\nYour task is to analyze the user's query and identify the **single problem type** that best matches the engineering problem.\nChoose exactly one problem type from the problem types defined in the system configuration.\nThe problem type must match one of the available keys in the configuration, such as:\n* `mechanics` * `unit_conversion` * `factor_of_safety` * `beam_stress` * `beam_deflection` * `column_buckling` * `fatigue_life` * `shaft_design` * `gear_design` * `bearing_life` * `spring_design` * `bolt_strength` * `pressure_vessel` * `fluid_flow` * `pump_power` * `thermodynamics` * `thermal_expansion` * `heat_transfer` * `hvac_load`\nUse the problem's description and context to determine the most appropriate type.\nReturn only the selected problem type key.\nDo not perform calculations. Do not extract parameters. Do not identify the operation. Do not provide explanations. Do not return the tool name. Do not create or invent a problem type that is not defined in the configuration.\n"}, {'role': 'user', 'content': 'Calculate the deflection at the center of a simply supported beam.'}], 'model': 'qwen/qwen3.8-27b', 'n': 1, 'reasoning_effort': None, 'reasoning_format': None, 'service_tier': 'on_demand', 'stop': None, 'stream': False, 'temperature': 0.7}}
+[ 2026-09-29 22:06:27,160 ] groq._base_client - DEBUG - Sending HTTP Request: POST https://api.groq.com/openai/v1/chat/completions
+[ 2026-09-29 22:06:27,161 ] httpcore.connection - DEBUG - connect_tcp.started host='api.groq.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-09-29 22:06:27,213 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7198b47382c0>
+[ 2026-09-29 22:06:27,213 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7198b623f050> server_hostname='api.groq.com' timeout=None
+[ 2026-09-29 22:06:27,268 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7198b472be60>
+[ 2026-09-29 22:06:27,268 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,269 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-09-29 22:06:27,269 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,270 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-09-29 22:06:27,270 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,407 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Tue, 29 Sep 2026 19:06:27 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'private, max-age=0, no-store, no-cache, must-revalidate'), (b'Server', b'cloudflare'), (b'vary', b'Origin'), (b'x-groq-region', b'fra'), (b'x-ratelimit-limit-requests', b'1000'), (b'x-ratelimit-limit-tokens', b'8000'), (b'x-ratelimit-remaining-requests', b'999'), (b'x-ratelimit-remaining-tokens', b'7658'), (b'x-ratelimit-reset-requests', b'1m26.4s'), (b'x-ratelimit-reset-tokens', b'2.565s'), (b'x-request-id', b'req_01m3q8za3herbsnsf3hyv0ewqz'), (b'set-cookie', b'__cf_bm=8UJswNhkB.2oYcunmXQGNj8Iir_Wf1M5bUU9SQzBjT8-1790708787.295884-1.0.1.1-1oNuGVXFi.yEo7o8aJcuycbVzetKifwB9iZ2ThGQZOsLY6w1e33xlX2GfA9dpTNSBQDzAPQjho49B7NVvvXrQhID8gqqywuWV6WDa3OBihVj.2GW.DP1zqv4GgLizcFb; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Tue, 29 Sep 2026 19:36:27 GMT'), (b'via', b'1.1 google'), (b'Strict-Transport-Security', b'max-age=15552000'), (b'cf-cache-status', b'DYNAMIC'), (b'Content-Encoding', b'gzip'), (b'CF-RAY', b'a42d43e09c22e9e9-MRS'), (b'alt-svc', b'h3=":443"; ma=86400')])
+[ 2026-09-29 22:06:27,408 ] httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2026-09-29 22:06:27,408 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,408 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-09-29 22:06:27,408 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-09-29 22:06:27,408 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-09-29 22:06:27,408 ] groq._base_client - DEBUG - HTTP Response: POST https://api.groq.com/openai/v1/chat/completions "200 OK" Headers({'date': 'Tue, 29 Sep 2026 19:06:27 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate', 'server': 'cloudflare', 'vary': 'Origin', 'x-groq-region': 'fra', 'x-ratelimit-limit-requests': '1000', 'x-ratelimit-limit-tokens': '8000', 'x-ratelimit-remaining-requests': '999', 'x-ratelimit-remaining-tokens': '7658', 'x-ratelimit-reset-requests': '1m26.4s', 'x-ratelimit-reset-tokens': '2.565s', 'x-request-id': 'req_01m3q8za3herbsnsf3hyv0ewqz', 'set-cookie': '__cf_bm=8UJswNhkB.2oYcunmXQGNj8Iir_Wf1M5bUU9SQzBjT8-1790708787.295884-1.0.1.1-1oNuGVXFi.yEo7o8aJcuycbVzetKifwB9iZ2ThGQZOsLY6w1e33xlX2GfA9dpTNSBQDzAPQjho49B7NVvvXrQhID8gqqywuWV6WDa3OBihVj.2GW.DP1zqv4GgLizcFb; HttpOnly; SameSite=None; Secure; Path=/; Domain=groq.com; Expires=Tue, 29 Sep 2026 19:36:27 GMT', 'via': '1.1 google', 'strict-transport-security': 'max-age=15552000', 'cf-cache-status': 'DYNAMIC', 'content-encoding': 'gzip', 'cf-ray': 'a42d43e09c22e9e9-MRS', 'alt-svc': 'h3=":443"; ma=86400'})
+[ 2026-09-29 22:06:27,531 ] google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+[ 2026-09-29 22:06:27,531 ] google_genai.models - WARNING - Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+[ 2026-09-29 22:06:27,548 ] httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-09-29 22:06:27,596 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7198b473ade0>
+[ 2026-09-29 22:06:27,596 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7198b4718150> server_hostname='generativelanguage.googleapis.com' timeout=None
+[ 2026-09-29 22:06:27,663 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7198b4fc0680>
+[ 2026-09-29 22:06:27,663 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,664 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-09-29 22:06:27,664 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:27,664 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-09-29 22:06:27,664 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:28,252 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'X-Gemini-Service-Tier', b'standard'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Tue, 29 Sep 2026 19:06:28 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=542'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+[ 2026-09-29 22:06:28,253 ] httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[ 2026-09-29 22:06:28,253 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-09-29 22:06:28,255 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-09-29 22:06:28,255 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-09-29 22:06:28,255 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-09-29 22:06:28,386 ] httpcore.connection - DEBUG - close.started
+[ 2026-09-29 22:06:28,386 ] httpcore.connection - DEBUG - close.complete
+[ 2026-09-29 22:06:28,386 ] httpcore.connection - DEBUG - close.started
+[ 2026-09-29 22:06:28,386 ] httpcore.connection - DEBUG - close.complete

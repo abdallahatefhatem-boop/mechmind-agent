@@ -8,10 +8,10 @@ from src.Exceptions import MechMind
 
 router = APIRouter()
 
-class QueryRequest(BaseModel):
+class QueryRequest(BaseModel): # input user question
     query: str
 
-class QueryResponse(BaseModel):
+class QueryResponse(BaseModel):# output
     explanation: str
     selected_tool: Optional[str] = None
     validation_result: Optional[Any] = None

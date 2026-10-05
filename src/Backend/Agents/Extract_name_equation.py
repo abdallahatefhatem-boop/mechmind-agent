@@ -1,39 +1,37 @@
-from src.Backend.Schemas.State import EngineeringState,EquationSelectionOutput
-from src.Logger import logging
-from src.Exceptions import MechMind
-from dotenv import load_dotenv
-from src.utils.Call_Models import call_models
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser ,JsonOutputParser
-import yaml
 import sys
-from src.utils.from_config import Prompt_tempelet ,supported_operations
+import yaml
+from dotenv import load_dotenv
+from langchain_core.prompts import ChatPromptTemplate
+from src.Backend.Schemas.State import EngineeringState, EquationSelectionOutput
+from src.Exceptions import MechMind
+from src.Logger import logging
+from src.utils.Call_Models import call_models
+from src.utils.from_config import Prompt_tempelet, supported_operations
 
 # Load environment variables first
 load_dotenv()
 
-# calling llm
-# In Extract_prob_type.py
-
-# Create an instance of call_models
+# Initialize LLM model
 models = call_models()
-
-# Call the instance method
 llm = models.call_google()
 
-# prompt
+# Load system prompt template
+prompt_choose_equation = Prompt_tempelet.System_choose_Equation()
 
-prompt_choose_equation=Prompt_tempelet.System_choose_Equation()
-
-
-
+# Bind structured output model to EquationSelectionOutput schema
 structured_llm = llm.with_structured_output(EquationSelectionOutput)
 
 
-def extract_equation_name(state: EngineeringState):
+def extract_equation_name(state: EngineeringState) -> dict:
     try:
         user_message = state["user_query"]
-        problem_type = state["problem_type"]
+        
+        # Ensure problem_type is formatted as a list
+        problem_type = state.get("problem_type", [])
+        if isinstance(problem_type, str):
+            problem_type = [problem_type]
+
+        # Retrieve available operations for all identified problem types
         operations = supported_operations.problem_type(problem_type=problem_type)
         system_prompt = prompt_choose_equation
 
@@ -42,27 +40,22 @@ def extract_equation_name(state: EngineeringState):
             ("human", "{user_message}")
         ])
 
-        
         chain = prompt | structured_llm
 
-        
+        # Invoke the chain passing problem_type, operations, and user query
         result: EquationSelectionOutput = chain.invoke({
             "problem_type": problem_type,
             "operations": operations,
             "user_message": user_message
         })
 
-       
+        # Return extracted details matching state schema
         return {
             "operation": result.operation,
-            "parameters": result.parameters,  
-            "units": result.units
+            "parameters": result.parameters or {},
+            "units": result.units or {}
         }
 
     except Exception as e:
         logging.error("Error occurred inside extract_equation_name function")
         raise MechMind(e, sys)
-
-
-
-

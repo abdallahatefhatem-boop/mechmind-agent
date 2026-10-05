@@ -13,7 +13,7 @@ class QueryRequest(BaseModel): # input user question
 
 class QueryResponse(BaseModel):#  structure output and schema for database
     explanation: str
-    selected_tool: Optional[str] = None
+    selected_tool: Optional[list[str]] = None
     validation_result: Optional[Any] = None
     calculation_result: Optional[Any] = None
 

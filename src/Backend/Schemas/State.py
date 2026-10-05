@@ -15,11 +15,11 @@ class EngineeringState(TypedDict):
 
     # The type/category of the engineering problem
     # Example: "beam_stress", "shaft_design", "fluid_flow"
-    problem_type: str
+    problem_type: Optional[list[str]]
 
     
     # Example: "bending_stress", "shaft_diameter"
-    operation:str
+    operation:Optional[list[str]]
 
     # The input values extracted from the user's question
     # Example: {"force": 1000, "length": 2, "diameter": 0.05}
@@ -31,7 +31,7 @@ class EngineeringState(TypedDict):
 
     # The engineering tool/function selected to solve the problem
     # Example: "calculate_beam_stress"
-    selected_tool: str
+    selected_tool: Optional[list[str]]
 
     # The result returned by the engineering calculation tool
     # Example: {"stress": 25e6, "unit": "Pa"}
@@ -84,18 +84,20 @@ class EquationSelectionOutput(BaseModel):
 
 
 class CalculationOutput(BaseModel):
-    selected_tool: str = Field(
-        description="The engineering tool/function selected to solve the problem. Example: 'calculate_beam_stress'"
+    selected_tool: List[str] = Field(
+        default_factory=list,
+        description="List of engineering tools used."
     )
-
-    calculation_result: dict = Field(
-        description="The result returned by the engineering calculation tool. Example: {'stress': 25e6, 'unit': 'Pa'}"
+    calculation_result: Dict = Field(
+        default_factory=dict,
+        description="Numerical outputs and units."
     )
-
-    validation_result: dict = Field(
-        description="Stores the result of validating the inputs and calculation. Example: {'valid': True, 'warnings': []}"
+    validation_result: Dict = Field(
+        default_factory=lambda: {"valid": True, "warnings": []},
+        description="Validation status and warnings."
     )
-
     explanation: str = Field(
-        description="The final human-readable explanation generated for the user. Contains the formula, inputs, calculation, result, and assumptions"
+        default="Step-by-step engineering calculation completed.",
+        description="Concise summary of the solution process."
     )
+    

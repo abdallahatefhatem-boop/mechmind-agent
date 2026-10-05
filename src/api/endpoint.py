@@ -11,7 +11,7 @@ router = APIRouter()
 class QueryRequest(BaseModel): # input user question
     query: str
 
-class QueryResponse(BaseModel):# output
+class QueryResponse(BaseModel):#  structure output and schema for database
     explanation: str
     selected_tool: Optional[str] = None
     validation_result: Optional[Any] = None

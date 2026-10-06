@@ -94,10 +94,10 @@ class CalculationOutput(BaseModel):
     )
     validation_result: Dict = Field(
         default_factory=lambda: {"valid": True, "warnings": []},
-        description="Validation status and warnings."
+        description="Validation status and warnings. 'warnings' should include engineering context such as the type of quantity calculated, assumptions made, other stress/force components not accounted for, and conditions under which results are valid."
     )
     explanation: str = Field(
-        default="Step-by-step engineering calculation completed.",
-        description="Concise summary of the solution process."
+        default="Detailed step-by-step engineering calculation process.",
+        description="Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning."
     )
     

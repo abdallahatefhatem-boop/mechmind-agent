@@ -7,6 +7,7 @@ from src.Exceptions import MechMind
 from src.Logger import logging
 from src.Backend.Schemas.State import EngineeringState, CalculationOutput
 from src.utils.Call_Models import call_models
+from src.utils.from_config import Prompt_tempelet
 
 # Import mechanical tools and converters
 from src.Backend.engineering_tools.conversions.mechanics import (
@@ -74,19 +75,13 @@ def chat_node(state: EngineeringState) -> Dict[str, Any]:
         parameters = state.get("parameters", {})
         units = state.get("units", {})
 
-        # Build a detailed system message passing parameters alongside their units
-        system_content = (
-            "You are an expert Mechanical Engineering Assistant.\n\n"
-            f"Problem Categories: {problem_type}\n"
-            f"Target Operations: {operations}\n"
-            f"Extracted Parameters: {parameters}\n"
-            f"Associated Units: {units}\n\n"
-            "Instructions:\n"
-            "1. Review the target operations and extracted parameters along with their specific units.\n"
-            "2. Convert parameter units if needed before performing calculations.\n"
-            "3. Invoke the necessary calculation/conversion tools using the exact numerical values and appropriate units.\n"
-            "4. If multiple operations are required, execute all relevant tools in proper sequence.\n"
-            "5. Do not invent or fabricate missing parameters."
+
+        raw_system_content = Prompt_tempelet.system_content()
+        system_content = raw_system_content.format(
+            problem_type=problem_type,
+            operations=operations,
+            parameters=parameters,
+            units=units,
         )
 
         system_message = SystemMessage(content=system_content)
@@ -116,23 +111,14 @@ def format_output_node(state: EngineeringState) -> Dict[str, Any]:
             method="json_mode"
         )
 
-        system_prompt = (
-            "You are a mechanical engineering output formatter.\n"
-            "Analyze the conversation history, tool calls, and results.\n\n"
-            f"Parameters: {parameters}\n"
-            f"Units: {units}\n"
-            f"Operations: {operations}\n\n"
-            "Return a valid JSON object matching this schema EXACTLY:\n"
-            "{\n"
-            '  "selected_tool": ["tool_name"],\n'
-            '  "calculation_result": {"parameter_name": value},\n'
-            '  "validation_result": {"valid": true, "warnings": []},\n'
-            '  "explanation": "Brief step-by-step summary of formulas and calculations."\n'
-            "}\n\n"
-            "Keep 'explanation' concise to ensure valid JSON generation."
+        
+        raw_format_prompt = Prompt_tempelet.format_output()
+        system_prompt = raw_format_prompt.format(
+            parameters=parameters,
+            units=units,
+            operations=operations,
         )
-
-        prompt_messages = [{"role": "system", "content": system_prompt}] + messages
+        prompt_messages = [SystemMessage(content=system_prompt)] + messages
 
         response: CalculationOutput = structured_llm.invoke(prompt_messages)
 

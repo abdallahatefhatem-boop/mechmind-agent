@@ -34,17 +34,17 @@ graph.add_edge("tool_node", "chat_node")
 workflow=graph.compile()
 
 @ensure_annotations # to ensure the input will be string not anything else
-def ask_llm(query:str):
+def run_workflow(query:str):
 
     init = workflow.invoke(
         {
             "messages": [HumanMessage(content=query)],
             "user_query": query
         },
-        config={"recursion_limit": 10} # To prevent infinite loops 
+        config={"recursion_limit": 25} # To prevent infinite loops 
     )
-    return {"expentaion":init["explanation"],
-            "select_tool":init["selected_tool"],
+    return {"explanation":init["explanation"],
+            "selected_tool":init["selected_tool"],
             "validation_result":init["validation_result"],
             "calculation_result":init["calculation_result"]}
 

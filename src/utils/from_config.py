@@ -25,6 +25,15 @@ class Prompt_tempelet:
         choose_equation = prompt_config["Write_Prompt"]["System_choose_Equation"]
         return choose_equation
 
+    @staticmethod
+    def system_content():
+        raw_template = prompt_config["Write_Prompt"]["system_content"]
+        return raw_template
+
+    @staticmethod
+    def format_output():
+        raw_template = prompt_config["Write_Prompt"]["format_output"]
+        return raw_template
 
 # Problem type configuration loading
 try:

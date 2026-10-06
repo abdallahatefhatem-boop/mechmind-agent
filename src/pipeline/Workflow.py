@@ -62,6 +62,34 @@ llm_with_tools = llm.bind_tools(MECHANICS_TOOLS)
 
 tool_node = ToolNode(MECHANICS_TOOLS)
 
+from pydantic import BaseModel, Field
+from langchain_core.messages import HumanMessage
+
+class IntentClassification(BaseModel):
+    intent: str = Field(description="Classify as 'engineering' if the user asks a physics/mechanics/engineering calculation question. Classify as 'casual' if it's a greeting, general chat, or non-engineering question.")
+
+def route_query(state: EngineeringState) -> str:
+    query = state.get("user_query", "")
+    try:
+        structured_llm = llm.with_structured_output(IntentClassification, method="json_mode")
+        response = structured_llm.invoke([
+            SystemMessage(content="You are an intent classifier. Classify the user query as 'engineering' or 'casual'. You must respond in JSON format."),
+            HumanMessage(content=query)
+        ])
+        if response.intent.lower() == 'casual':
+            return "general_chat_node"
+    except Exception as e:
+        logging.error(f"Routing error: {e}")
+    return "extract_problem"
+
+def general_chat_node(state: EngineeringState) -> Dict[str, Any]:
+    messages = state.get("messages", [])
+    response = llm.invoke(
+        [SystemMessage(content="You are MechMind, a helpful engineering AI Assistant. Reply conversationally and concisely.")] + messages
+    )
+    return {"explanation": response.content, "calculation_result": {}, "selected_tool": []}
+
+
 
 def chat_node(state: EngineeringState) -> Dict[str, Any]:
     """

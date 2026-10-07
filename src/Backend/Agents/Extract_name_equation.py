@@ -30,31 +30,35 @@ def extract_equation_name(state: EngineeringState) -> dict:
         problem_type = state.get("problem_type", [])
         if isinstance(problem_type, str):
             problem_type = [problem_type]
+        if "noproblem" in problem_type:
+            return {"operation": "noproblem", "parameters": {}, "units": {}}
 
-        # Retrieve available operations for all identified problem types
-        operations = supported_operations.problem_type(problem_type=problem_type)
-        system_prompt = prompt_choose_equation
+        
+        else:
+            # Retrieve available operations for all identified problem types
+            operations = supported_operations.problem_type(problem_type=problem_type)
+            system_prompt = prompt_choose_equation
 
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", system_prompt),
-            ("human", "{user_message}")
-        ])
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", system_prompt),
+                ("human", "{user_message}")
+            ])
 
-        chain = prompt | structured_llm
+            chain = prompt | structured_llm
 
-        # Invoke the chain passing problem_type, operations, and user query
-        result: EquationSelectionOutput = chain.invoke({
-            "problem_type": problem_type,
-            "operations": operations,
-            "user_message": user_message
-        })
+            # Invoke the chain passing problem_type, operations, and user query
+            result: EquationSelectionOutput = chain.invoke({
+                "problem_type": problem_type,
+                "operations": operations,
+                "user_message": user_message
+            })
 
-        # Return extracted details matching state schema
-        return {
-            "operation": result.operation,
-            "parameters": result.parameters or {},
-            "units": result.units or {}
-        }
+            # Return extracted details matching state schema
+            return {
+                "operation": result.operation,
+                "parameters": result.parameters or {},
+                "units": result.units or {}
+            }
 
     except Exception as e:
         logging.error("Error occurred inside extract_equation_name function")

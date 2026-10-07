@@ -1,0 +1,15 @@
+[ 2026-10-07 14:35:17,309 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-07 14:35:17,309 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-07 14:35:17,310 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-07 14:35:17,312 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-07 14:35:17,313 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-10-07 14:35:17,321 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-10-07 14:35:46,886 ] root - INFO - Received query: hi
+[ 2026-10-07 14:35:46,898 ] langsmith.client - DEBUG - LangSmith API URL https://api.smith.langchain.com resolved from LANGSMITH_ENDPOINT / LANGCHAIN_ENDPOINT environment variable
+[ 2026-10-07 14:35:46,903 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-07 14:35:46,928 ] root - ERROR - Error processing query: Error occurred python script name [/home/mg/my_venv/src/api/endpoint.py] line number [39] error message ['step']
+[ 2026-10-07 14:35:47,422 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+[ 2026-10-07 14:35:47,427 ] langsmith.client - DEBUG - Tracing control thread func compress parallel called
+[ 2026-10-07 14:35:47,477 ] langsmith.client - DEBUG - Handling batch in langsmith mode
+[ 2026-10-07 14:35:47,481 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-07 14:35:47,906 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34

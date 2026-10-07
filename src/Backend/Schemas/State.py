@@ -1,4 +1,4 @@
-from typing import TypedDict, Annotated ,Dict,List ,Optional
+from typing import TypedDict, Annotated ,Dict,List ,Optional,Any
 from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field 
@@ -88,9 +88,9 @@ class CalculationOutput(BaseModel):
         default_factory=list,
         description="List of engineering tools used."
     )
-    calculation_result: Dict = Field(
+    calculation_result: Dict[str, Any] = Field(
         default_factory=dict,
-        description="Numerical outputs and units."
+        description="Numerical outputs as exact raw floating-point values without rounding."
     )
     validation_result: Dict = Field(
         default_factory=lambda: {"valid": True, "warnings": []},
@@ -98,6 +98,6 @@ class CalculationOutput(BaseModel):
     )
     explanation: str = Field(
         default="Detailed step-by-step engineering calculation process.",
-        description="Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning."
+        description=" exaplain deeply and Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning and write the reults with explaine and the unit for each result."
     )
     

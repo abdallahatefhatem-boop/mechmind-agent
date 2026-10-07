@@ -26,6 +26,7 @@ Write_Prompt:
     * `thermal_expansion`
     * `heat_transfer`
     * `hvac_load`
+    * `noproblem`
 
     Use the problem's description and context to determine the appropriate types.
 
@@ -36,7 +37,8 @@ Write_Prompt:
     Do not identify the operation.
     Do not provide explanations.
     Do not return the tool name.
-    Do not create or invent any problem type that is not defined in the configuration."
+    Do not create or invent any problem type that is not defined in the configuration.
+    But if there not problem return noproblem"
 
 
   System_choose_Equation: "You are an AI assistant for mechanical engineering problem solving.
@@ -47,7 +49,7 @@ Write_Prompt:
     Available operations and equations for these problem types:
     {operations}
 
-    Your task is to analyze the user's query and perform the following:
+    Your task is to analyze the user's query and understand it very good  and perform the following:
     1. Select all required operations to solve the problem (must be chosen strictly from the provided available operations; a problem can require one or multiple operations).
     2. Extract the numerical values for each parameter directly from the user's query as float numbers.
     3. Extract the measurement units associated with each parameter from the user's query.
@@ -96,10 +98,14 @@ Write_Prompt:
       "selected_tool": ["tool_name"],
       "calculation_result": {{"parameter_name": value}},
       "validation_result": {{"valid": true/false, "warnings": ["warning1", "warning2"]}},
-      "explanation": "Brief step-by-step summary of formulas and calculations."
+      "explanation": "exaplain deeply and Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning and write the reults with explaine and the unit for each result."
     }}
 
     IMPORTANT rules for 'validation_result':
     - Set 'valid' to true if the calculation executed correctly, false if there were errors.
     - The 'warnings' list must NEVER be empty. Always include at least one warning.
     Keep 'explanation' concise to ensure valid JSON generation.
+    CRITICAL NUMBER FORMATTING RULES:
+    1. Do NOT round any float values (e.g. return 8482.5 instead of 8483).
+    2. Do NOT use scientific notation (e.g. return 25727.5 instead of 2.57e4 or 25700).
+    3. Always return exact raw floating-point calculations in the calculation_result dictionary.

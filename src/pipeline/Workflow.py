@@ -1,4 +1,5 @@
 import sys
+from langchain_core.messages import AIMessage
 from typing import Dict, Any
 
 from langchain_core.messages import SystemMessage
@@ -62,33 +63,6 @@ llm_with_tools = llm.bind_tools(MECHANICS_TOOLS)
 
 tool_node = ToolNode(MECHANICS_TOOLS)
 
-from pydantic import BaseModel, Field
-from langchain_core.messages import HumanMessage
-
-class IntentClassification(BaseModel):
-    intent: str = Field(description="Classify as 'engineering' if the user asks a physics/mechanics/engineering calculation question. Classify as 'casual' if it's a greeting, general chat, or non-engineering question.")
-
-def route_query(state: EngineeringState) -> str:
-    query = state.get("user_query", "")
-    try:
-        structured_llm = llm.with_structured_output(IntentClassification, method="json_mode")
-        response = structured_llm.invoke([
-            SystemMessage(content="You are an intent classifier. Classify the user query as 'engineering' or 'casual'. You must respond in JSON format."),
-            HumanMessage(content=query)
-        ])
-        if response.intent.lower() == 'casual':
-            return "general_chat_node"
-    except Exception as e:
-        logging.error(f"Routing error: {e}")
-    return "extract_problem"
-
-def general_chat_node(state: EngineeringState) -> Dict[str, Any]:
-    messages = state.get("messages", [])
-    response = llm.invoke(
-        [SystemMessage(content="You are MechMind, a helpful engineering AI Assistant. Reply conversationally and concisely.")] + messages
-    )
-    return {"explanation": response.content, "calculation_result": {}, "selected_tool": []}
-
 
 
 def chat_node(state: EngineeringState) -> Dict[str, Any]:
@@ -121,6 +95,32 @@ def chat_node(state: EngineeringState) -> Dict[str, Any]:
     except Exception as e:
         logging.error("Error occurred inside chat_node")
         raise MechMind(e, sys)
+
+
+def chat_response_node(state: EngineeringState) -> Dict[str, Any]:
+    """
+    Handles non-engineering queries (greetings, general questions).
+    Returns the LLM's last message as a plain explanation without
+    requiring the CalculationOutput structured schema.
+    """
+    try:
+        messages = state.get("messages", [])
+        # Get the last AI message content as the plain reply
+        last_ai_msg = next(
+            (m for m in reversed(messages) if isinstance(m, AIMessage)),
+            None
+        )
+        explanation = last_ai_msg.content if last_ai_msg else "I'm here to help!"
+        return {
+            "explanation": explanation,
+            "selected_tool": [],
+            "calculation_result": {},
+            "validation_result": {"valid": True, "warnings": []},
+        }
+    except Exception as e:
+        logging.error("Error occurred inside chat_response_node")
+        raise MechMind(e, sys)
+
 
 
 def format_output_node(state: EngineeringState) -> Dict[str, Any]:

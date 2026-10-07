@@ -1,0 +1,10 @@
+[ 2026-10-07 14:27:33,178 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-07 14:27:33,178 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-07 14:27:33,179 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-07 14:27:33,181 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-07 14:27:33,181 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-10-07 14:27:33,192 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-10-07 14:27:33,563 ] asyncio - DEBUG - Using selector: EpollSelector
+[ 2026-10-07 14:27:33,621 ] pyppeteer.chromium_downloader - INFO - Starting Chromium download.
+[ 2026-10-07 14:27:33,621 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+[ 2026-10-07 14:27:33,933 ] urllib3.connectionpool - DEBUG - https://storage.googleapis.com:443 "GET /chromium-browser-snapshots/Linux_x64/1181205/chrome-linux.zip HTTP/1.1" 200 182674957

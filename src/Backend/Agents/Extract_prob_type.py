@@ -22,7 +22,7 @@ prompt_choose_prob = Prompt_tempelet.System_choose_prob()
 # Pydantic schema to enforce list structured output from LLM
 class ProblemTypeOutput(BaseModel):
     problem_type: list[str] = Field(
-        description="List of identified mechanical engineering problem types strictly matching the available configuration keys."
+        description="List of identified mechanical engineering problem types strictly matching the available configuration keys if there isn't any problem tell noproblem."
     )
 
 

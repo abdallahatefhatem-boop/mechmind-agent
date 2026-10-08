@@ -24,7 +24,7 @@ def init_db():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS ui_chat_messages (
                     id SERIAL PRIMARY KEY,
-                    thread_id TEXT REFERENCES ui_chat_sessions(thread_id),
+                    thread_id TEXT REFERENCES ui_chat_sessions(thread_id) ON DELETE CASCADE,
                     role TEXT NOT NULL,
                     content TEXT NOT NULL,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -71,6 +71,15 @@ def save_message(thread_id: str, role: str, content: str):
                 "INSERT INTO ui_chat_messages (thread_id, role, content) VALUES (%s, %s, %s)",
                 (thread_id, role, content),
             )
+        conn.commit()
+
+
+def delete_session(thread_id: str):
+    """Delete a chat session and its associated messages from the database."""
+    with psycopg.connect(DB_URI) as conn:
+        with conn.cursor() as cur:
+            cur.execute("DELETE FROM ui_chat_messages WHERE thread_id = %s", (thread_id,))
+            cur.execute("DELETE FROM ui_chat_sessions WHERE thread_id = %s", (thread_id,))
         conn.commit()
 
 
@@ -152,10 +161,25 @@ with st.sidebar:
             is_active = (session_id == st.session_state.thread_id)
             btn_style = "primary" if is_active else "secondary"
             
-            if st.button(f"💬 {title}", key=session_id, use_container_width=True, type=btn_style):
-                st.session_state.thread_id = session_id
-                st.session_state.messages = get_messages(session_id)
-                st.rerun()
+            # Divide each row into two columns: one for opening chat, one for deleting
+            col1, col2 = st.columns([0.82, 0.18])
+            
+            with col1:
+                if st.button(f"💬 {title}", key=f"select_{session_id}", use_container_width=True, type=btn_style):
+                    st.session_state.thread_id = session_id
+                    st.session_state.messages = get_messages(session_id)
+                    st.rerun()
+            
+            with col2:
+                if st.button("🗑️", key=f"del_{session_id}", use_container_width=True):
+                    delete_session(session_id)
+                    
+                    # If user deleted the current active thread, reset to a new chat session
+                    if session_id == st.session_state.thread_id:
+                        st.session_state.thread_id = str(uuid.uuid4())
+                        st.session_state.messages = []
+                    st.rerun()
+
     except Exception as e:
         st.caption("Unable to load chat history.")
 

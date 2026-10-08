@@ -1,0 +1,55 @@
+[ 2026-10-08 22:10:43,011 ] root - INFO - Reading model configuration from yaml...
+[ 2026-10-08 22:10:43,011 ] root - INFO - Model configuration loaded successfully.
+[ 2026-10-08 22:10:43,012 ] root - INFO - Reading prompts from config/Prompts.yaml...
+[ 2026-10-08 22:10:43,014 ] root - INFO - Prompts loaded successfully.
+[ 2026-10-08 22:10:43,015 ] root - INFO - Reading name of equations from config/Problem_type.yaml...
+[ 2026-10-08 22:10:43,023 ] root - INFO - Name of Equations loaded successfully.
+[ 2026-10-08 22:11:31,555 ] root - INFO - Received query: An HVAC system supplies air at a mass flow rate of 2 kg/s. The specific heat of air is 1005 J/(kg·K), and the temperature difference is 10°C. Calculate the sensible heat load. (thread_id: 2eba27a7-c705-441e-ad44-4be3ec6f4071)
+[ 2026-10-08 22:11:31,561 ] langsmith.client - DEBUG - LangSmith API URL https://api.smith.langchain.com resolved from LANGSMITH_ENDPOINT / LANGCHAIN_ENDPOINT environment variable
+[ 2026-10-08 22:11:31,572 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-08 22:11:31,786 ] google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+[ 2026-10-08 22:11:31,786 ] google_genai.models - WARNING - Direct use of automatic function calling (AFC) in Models.generate_content is not recommended. Instead, we recommend to use AFC in Chat.send_message. Similarly, direct use of AFC in Models.generate_content_stream is not recommended. Instead, we recommend to use AFC in Chat.send_message_stream.
+[ 2026-10-08 22:11:31,807 ] httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-08 22:11:31,853 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7da8d8344350>
+[ 2026-10-08 22:11:31,853 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7da8d79d73d0> server_hostname='generativelanguage.googleapis.com' timeout=None
+[ 2026-10-08 22:11:31,912 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7da8c13d5460>
+[ 2026-10-08 22:11:31,912 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:31,913 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-08 22:11:31,913 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:31,913 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-08 22:11:31,913 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:31,985 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "GET /info HTTP/1.1" 200 None
+[ 2026-10-08 22:11:31,987 ] langsmith.client - DEBUG - Tracing control thread func compress parallel called
+[ 2026-10-08 22:11:32,038 ] langsmith.client - DEBUG - Handling batch in langsmith mode
+[ 2026-10-08 22:11:32,045 ] urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.smith.langchain.com:443
+[ 2026-10-08 22:11:32,428 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-08 22:11:40,627 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'X-Gemini-Service-Tier', b'standard'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 08 Oct 2026 19:11:40 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=8670'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+[ 2026-10-08 22:11:40,629 ] httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[ 2026-10-08 22:11:40,630 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:40,630 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-08 22:11:40,631 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-08 22:11:40,631 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-08 22:11:40,638 ] langsmith.client - DEBUG - Compressed frame committed to ['https://api.smith.langchain.com']
+[ 2026-10-08 22:11:40,663 ] google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+[ 2026-10-08 22:11:40,671 ] httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+[ 2026-10-08 22:11:40,716 ] httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7da8c12ab440>
+[ 2026-10-08 22:11:40,716 ] httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x7da8d7a68350> server_hostname='generativelanguage.googleapis.com' timeout=None
+[ 2026-10-08 22:11:40,786 ] httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7da8c12c7d10>
+[ 2026-10-08 22:11:40,786 ] httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:40,787 ] httpcore.http11 - DEBUG - send_request_headers.complete
+[ 2026-10-08 22:11:40,788 ] httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:40,788 ] httpcore.http11 - DEBUG - send_request_body.complete
+[ 2026-10-08 22:11:40,789 ] httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:41,168 ] langsmith.client - DEBUG - Sending compressed multipart request with context: trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-893a-7d12-8674-6890403da1be; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac60-7d73-8161-004ebe9810a4; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac60-7d73-8161-004ebe9810a4; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-892f-74d2-b565-1546f9dfee6e; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac64-7961-896a-a542ca9668bc; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac64-7961-896a-a542ca9668bc; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-8929-7f12-ac84-893c2336f841; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac69-7003-852a-0c13fffe06bb; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac6b-7280-b018-92bb2e373651; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac6f-7a50-9e16-c9df3c00dfe1; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac6f-7a50-9e16-c9df3c00dfe1; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac74-7942-a6ba-5272e6e7d8a9
+[ 2026-10-08 22:11:41,376 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34
+[ 2026-10-08 22:11:47,438 ] httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'X-Gemini-Service-Tier', b'standard'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 08 Oct 2026 19:11:47 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=6607'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+[ 2026-10-08 22:11:47,439 ] httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent "HTTP/1.1 200 OK"
+[ 2026-10-08 22:11:47,440 ] httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+[ 2026-10-08 22:11:47,441 ] httpcore.http11 - DEBUG - receive_response_body.complete
+[ 2026-10-08 22:11:47,441 ] httpcore.http11 - DEBUG - response_closed.started
+[ 2026-10-08 22:11:47,441 ] httpcore.http11 - DEBUG - response_closed.complete
+[ 2026-10-08 22:11:47,445 ] langsmith.client - DEBUG - Compressed frame committed to ['https://api.smith.langchain.com']
+[ 2026-10-08 22:11:47,457 ] root - ERROR - Error occurred inside chat_node
+[ 2026-10-08 22:11:47,538 ] root - ERROR - Error processing query for thread_id 2eba27a7-c705-441e-ad44-4be3ec6f4071: Error occurred python script name [/home/mg/my_venv/src/api/endpoint.py] line number [44] error message [Error occurred python script name [/home/mg/my_venv/src/pipeline/Workflow.py] line number [347] error message [unhashable type: 'StructuredTool']]
+[ 2026-10-08 22:11:48,043 ] langsmith.client - DEBUG - Sending compressed multipart request with context: trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac74-7942-a6ba-5272e6e7d8a9; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-c6f6-7a03-9c74-bf9dce1e66d6; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-c6f6-7a03-9c74-bf9dce1e66d6; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac6b-7280-b018-92bb2e373651; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-ac69-7003-852a-0c13fffe06bb; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-c6fd-7ed1-bcb1-3a4d1cd91df8; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-c6fd-7ed1-bcb1-3a4d1cd91df8; trace=01a11ced-88f2-7f92-a040-e219a896b93d,id=01a11ced-88f2-7f92-a040-e219a896b93d
+[ 2026-10-08 22:11:48,244 ] urllib3.connectionpool - DEBUG - https://api.smith.langchain.com:443 "POST /runs/multipart HTTP/1.1" 202 34

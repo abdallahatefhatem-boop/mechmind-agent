@@ -98,6 +98,6 @@ class CalculationOutput(BaseModel):
     )
     explanation: str = Field(
         default="Detailed step-by-step engineering calculation process.",
-        description=" exaplain deeply and Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning and write the reults with explaine and the unit for each result."
+        description=" exaplain deeply and Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning and write the reults with explaine and the unit for each result and make it human readable."
     )
     

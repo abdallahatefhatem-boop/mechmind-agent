@@ -1,7 +1,8 @@
 import sys
 from typing import Dict, Any, List
 
-from langchain_core.messages import SystemMessage, AIMessage
+from langchain_core.messages import SystemMessage, AIMessage, HumanMessage, ToolMessage
+from langchain_core.output_parsers import PydanticOutputParser
 from langgraph.prebuilt import ToolNode
 from src.Exceptions import MechMind
 from src.Logger import logging
@@ -107,27 +108,57 @@ tool_node = ToolNode(ALL_MECHANICS_TOOLS)
 
 def filter_tools_by_state(problem_types: List[str], operations: List[str]) -> List[Any]:
     """
-    Dynamically filters and returns only relevant tools 
-    based on state problem_types and operations without unhashable errors.
+    Dynamically filters and returns only relevant tools
+    based on state problem_types and operations.
+
+    Matching uses three tiers for robustness:
+      Tier 1 – exact string match     (e.g. 'shaft_design' == 'shaft_design')
+      Tier 2 – word-stem match        (e.g. 'shaft_design' vs 'shaft_diameter'
+                                        share the word 'shaft' → match)
+      Tier 3 – substring match        (original fallback behaviour)
+
+    Base mechanics + unit_conversion are always appended so the LLM always
+    has access to fundamental tools regardless of the specialist match.
     """
     selected_tools = []
-    
-    # Normalize strings for matching
+
+    # Normalize inputs
     keys_to_check = [str(k).lower().strip() for k in (problem_types + operations) if k]
 
+    # Generic words that alone should not trigger a specialist-tool match
+    NOISE_WORDS = {"design", "calculation", "compute", "get", "find", "calculate"}
+
     for key, tools in TOOL_MAPPING.items():
+        matched = False
         for query_key in keys_to_check:
+            # Tier 1 – exact match
+            if key == query_key:
+                matched = True
+                break
+
+            # Tier 2 – shared meaningful word-stem
+            # e.g. "shaft_design" ∩ "shaft_diameter" = {"shaft"} → True
+            key_words = set(key.split("_")) - NOISE_WORDS
+            query_words = set(query_key.split("_")) - NOISE_WORDS
+            if key_words & query_words:
+                matched = True
+                break
+
+            # Tier 3 – substring match (legacy fallback)
             if key in query_key or query_key in key:
-                selected_tools.extend(tools)
+                matched = True
+                break
 
-    # Fallback if no specific match was found
-    if not selected_tools:
-        selected_tools.extend(TOOL_MAPPING["mechanics"])
-        selected_tools.extend(TOOL_MAPPING["unit_conversion"])
+        if matched:
+            selected_tools.extend(tools)
 
-    # Remove duplicates safely using tool.name instead of set()
+    # Always include base mechanics + unit_conversion tools
+    selected_tools.extend(TOOL_MAPPING["mechanics"])
+    selected_tools.extend(TOOL_MAPPING["unit_conversion"])
+
+    # Deduplicate while preserving order
     unique_tools = []
-    seen_names = set()
+    seen_names: set = set()
     for tool in selected_tools:
         tool_name = getattr(tool, "name", str(tool))
         if tool_name not in seen_names:
@@ -139,8 +170,15 @@ def filter_tools_by_state(problem_types: List[str], operations: List[str]) -> Li
 
 def chat_node(state: EngineeringState) -> Dict[str, Any]:
     """
-    LLM node that dynamically binds only relevant tools 
-    based on the extracted problem types and operations.
+    LLM node that dynamically binds only relevant tools to stay within the
+    Groq TPM token limit (8000) while guaranteeing the right tools are included.
+
+    Tool selection uses two phases:
+      Phase 1 – Direct lookup:  problem_type keys map directly to TOOL_MAPPING,
+                so problem_type=['shaft_design'] always includes shaft_design.
+      Phase 2 – Fuzzy match:   operations are matched via word-stem matching
+                as a secondary safety net.
+    Base mechanics + unit_conversion tools are always appended.
     """
     try:
         messages = state.get("messages", [])
@@ -149,13 +187,11 @@ def chat_node(state: EngineeringState) -> Dict[str, Any]:
         parameters = state.get("parameters", {})
         units = state.get("units", {})
 
-        # 1. Dynamically filter tools to prevent token overflow
+        # Smart dynamic filtering — stays within token limits
         active_tools = filter_tools_by_state(problem_type, operations)
 
-        # 2. Bind only filtered tools for the current call
         llm_with_tools = llm.bind_tools(active_tools)
 
-        # 3. Format system message and invoke model
         raw_system_content = Prompt_tempelet.system_content()
         system_content = raw_system_content.format(
             problem_type=problem_type,
@@ -173,6 +209,7 @@ def chat_node(state: EngineeringState) -> Dict[str, Any]:
     except Exception as e:
         logging.error("Error occurred inside chat_node")
         raise MechMind(e, sys)
+
 
 
 def chat_response_node(state: EngineeringState) -> Dict[str, Any]:
@@ -199,9 +236,49 @@ def chat_response_node(state: EngineeringState) -> Dict[str, Any]:
         raise MechMind(e, sys)
 
 
+def sanitize_messages_for_extraction(messages: List[Any]) -> List[Any]:
+    """
+    Converts a raw LangGraph message list into a form that is safe for
+    structured output extraction (no ToolMessages, no bare tool_call AIMessages).
+
+    Mapping:
+      HumanMessage            → kept as-is
+      AIMessage (tool_calls)  → converted to plain AIMessage summarising the call
+      ToolMessage             → converted to HumanMessage relaying the result
+      AIMessage (plain)       → kept as-is
+    """
+    safe: List[Any] = []
+    for msg in messages:
+        if isinstance(msg, ToolMessage):
+            # Surface the tool result as readable context for the formatter
+            safe.append(
+                HumanMessage(
+                    content=f"[Tool result for '{msg.name}']:\n{msg.content}"
+                )
+            )
+        elif isinstance(msg, AIMessage):
+            if msg.tool_calls:
+                # Summarise what tools were invoked instead of passing raw tool_calls
+                call_summary = ", ".join(
+                    f"{tc['name']}({tc.get('args', {})})"
+                    for tc in msg.tool_calls
+                )
+                safe.append(
+                    AIMessage(content=f"[Called tools]: {call_summary}")
+                )
+            else:
+                safe.append(msg)
+        else:
+            # HumanMessage and any other message types are kept as-is
+            safe.append(msg)
+    return safe
+
+
 def format_output_node(state: EngineeringState) -> Dict[str, Any]:
     """
-    Extracts structured final output using CalculationOutput schema with json_mode.
+    Extracts structured final output using CalculationOutput schema.
+    Uses PydanticOutputParser to extract the JSON directly from the raw message
+    content, bypassing flaky tool-calling API enforcement.
     """
     try:
         messages = state.get("messages", [])
@@ -209,20 +286,34 @@ def format_output_node(state: EngineeringState) -> Dict[str, Any]:
         units = state.get("units", {})
         operations = state.get("operation", [])
 
-        structured_llm = llm.with_structured_output(
-            CalculationOutput,
-            method="json_mode"
-        )
-
         raw_format_prompt = Prompt_tempelet.format_output()
         system_prompt = raw_format_prompt.format(
             parameters=parameters,
             units=units,
             operations=operations,
         )
-        prompt_messages = [SystemMessage(content=system_prompt)] + messages
 
-        response: CalculationOutput = structured_llm.invoke(prompt_messages)
+        # Strip ToolMessages / bare tool-call AIMessages before extraction
+        safe_messages = sanitize_messages_for_extraction(messages)
+        prompt_messages = [SystemMessage(content=system_prompt)] + safe_messages
+
+        # Invoke raw LLM (no tool-calling enforcement)
+        response_msg = llm.invoke(prompt_messages)
+
+        # Parse the raw text content into the Pydantic schema
+        parser = PydanticOutputParser(pydantic_object=CalculationOutput)
+        
+        try:
+            response = parser.parse(response_msg.content)
+        except Exception as parse_error:
+            # Fallback if the LLM output something slightly malformed
+            import json, re
+            match = re.search(r'\{.*\}', response_msg.content, re.DOTALL)
+            if match:
+                data = json.loads(match.group(0))
+                response = CalculationOutput(**data)
+            else:
+                raise parse_error
 
         return {
             "selected_tool": response.selected_tool,

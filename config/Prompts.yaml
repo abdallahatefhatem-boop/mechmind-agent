@@ -98,13 +98,49 @@ Write_Prompt:
       "selected_tool": ["tool_name"],
       "calculation_result": {{"parameter_name": value}},
       "validation_result": {{"valid": true/false, "warnings": ["warning1", "warning2"]}},
-      "explanation": "exaplain deeply and Comprehensive detailed explanation showing given parameters, formulas used, step-by-step substitution, and final results with physical meaning and write the reults with explaine and the unit for each result."
+      "explanation": "<STRUCTURED MARKDOWN — see rules below>"
     }}
+
+    EXPLANATION FORMATTING RULES (CRITICAL — follow exactly):
+    The "explanation" value MUST be a single JSON string using \n for newlines.
+    Structure it with these exact Markdown sections:
+
+    ## Given Data\n
+    - List every input parameter on its own bullet line with its value and unit.\n
+    \n
+    ## Step 1: <Step Title>\n
+    Brief one-line description.\n
+    Formula: `formula`\n
+    Substitution: `numbers`\n
+    Result: **value unit**\n
+    \n
+    ## Step 2: <Step Title>\n
+    ... (repeat for every calculation step) ...\n
+    \n
+    ## Final Results\n
+    - **Parameter name:** value unit\n
+    \n
+    ## Assumptions & Warnings\n
+    - One assumption or warning per bullet.\n
+
+    STRICT ANTI-ARTIFACT RULES (violations will break the UI):
+    1. NEVER split a variable name or subscript across multiple lines.
+       BAD:  "F\ntotal\nF \ntotal"   GOOD:  "F_total"
+    2. NEVER write the same equation twice in different formats.
+       Each equation appears EXACTLY ONCE as plain text.
+    3. NEVER use raw LaTeX commands (\frac, \pi, \sigma, \cdot, \sqrt).
+       Use plain Unicode instead: π, σ, √, ·, ×
+    4. NEVER use Unicode asterisk ∗ — use only ASCII asterisk * for bold (**text**).
+    5. NEVER write subscripts as separate lines or repeated words.
+       BAD:  "A\nbolt\nA \nbolt"   GOOD:  "A_bolt"
+    6. Write math as readable text: "F_total = P × A" not as LaTeX expressions.
+    7. Use ## headings. Every heading MUST have a blank line before it.
+    8. Keep each sentence SHORT. No run-on paragraphs.
 
     IMPORTANT rules for 'validation_result':
     - Set 'valid' to true if the calculation executed correctly, false if there were errors.
     - The 'warnings' list must NEVER be empty. Always include at least one warning.
-    Keep 'explanation' concise to ensure valid JSON generation.
+
     CRITICAL NUMBER FORMATTING RULES:
     1. Do NOT round any float values (e.g. return 8482.5 instead of 8483).
     2. Do NOT use scientific notation (e.g. return 25727.5 instead of 2.57e4 or 25700).

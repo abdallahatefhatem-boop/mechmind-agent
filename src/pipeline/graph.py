@@ -9,7 +9,9 @@ from langgraph.prebuilt import tools_condition
 from langchain_core.messages import HumanMessage
 from ensure import ensure_annotations
 
-DB_URI = "postgresql://postgres:postgres@localhost:5432/engineering_db"
+import os
+
+DB_URI = os.getenv("DB_URI", "postgresql://postgres:postgres@localhost:5432/engineering_db")
 
 pool = ConnectionPool(DB_URI, kwargs={"autocommit": True})
 checkpointer = PostgresSaver(pool)

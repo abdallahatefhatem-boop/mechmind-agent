@@ -46,4 +46,4 @@ jobs:
       env:
         DB_URI: postgresql://postgres:postgres@localhost:5432/engineering_db
       run: |
-        uv run pytest tests/ -v
+        PYTHONPATH=. uv run pytest tests/ -v

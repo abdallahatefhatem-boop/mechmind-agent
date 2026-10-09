@@ -8,7 +8,7 @@ setup:
 # Run the test suite
 test:
 	uv pip install pytest httpx
-	uv run pytest tests/ -v
+	PYTHONPATH=. uv run pytest tests/ -v
 
 # Run the FastAPI backend locally
 run-backend:

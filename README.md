@@ -10,6 +10,12 @@ Welcome to **MechMind**, a highly specialized AI agent designed specifically for
 
 Large Language Models (LLMs) are notoriously bad at math and physics calculations. They hallucinate numbers and mess up formulas. **MechMind solves this problem.** By acting as an orchestrator, the AI understands your natural language engineering problem, extracts the physics parameters, and delegates the actual heavy mathematical lifting to **pure Python deterministic tools**. The result is a 100% accurate calculation wrapped in a beautiful, human-readable explanation.
 
+<div align="center">
+  <img src="./Screencast-from-2026-10-09-17-53-38.gif" alt="MechMind Demo" width="900"/>
+  <br/>
+  <em>🎬 MechMind in action — from natural language question to deterministic engineering answer</em>
+</div>
+
 ---
 
 ## 🌟 Key Features
@@ -153,3 +159,49 @@ We welcome contributions! If you want to add a new mechanical engineering formul
 2. Add its schema to the prompt templates in `config/Prompts.yaml`.
 3. Register the tool in `src/pipeline/Workflow.py` (`TOOL_MAPPING`).
 4. Write tests and open a Pull Request!
+
+---
+
+## 📊 Evaluation Pipeline & Engineering Validation
+
+To ensure the highest accuracy of the AI agent, we have built a comprehensive **Evaluation Pipeline** (`tests/eval_pipeline.py`). This is crucial because standard LLM metrics do not capture real engineering correctness.
+
+### 1. Automated Dataset Generation
+We don't manually write test cases; we generate them programmatically to cover normal, edge, and invalid conditions.
+```bash
+# Generates 100+ physics problems dynamically with expected reference outputs
+python tests/generate_test_cases.py
+```
+This produces a `tests/eval_data/dataset.json` dataset testing boundaries like:
+- Normal use cases: e.g., standard forces, normal stresses.
+- Edge cases: e.g., extremely small inputs ($10^{-5}$).
+- Invalid inputs: e.g., `Area = 0` (causing intentional ZeroDivision).
+
+### 2. Independent Engineering Validation
+When the pipeline runs, it verifies the outputs against **independent mathematical validation functions** (Lambda functions injected during dataset generation), ensuring that the LLM's parsed JSON output matches real-world physics laws to within a strict error tolerance (e.g., `< 0.01`).
+
+### 3. Running the Pipeline
+```bash
+# The evaluation script is designed to trace its own execution
+PYTHONPATH=. uv run python tests/eval_pipeline.py
+```
+This pipeline calculates and reports:
+- **Accuracy Correctness**: Did the final calculation match the reference?
+- **Tool Selection**: Did the LLM pick the exact right formula out of 35+ tools?
+- **Execution Failures**: Rate of fatal execution loops.
+- **Average Latency**: Time to completion per problem.
+
+---
+
+## 🔭 Observability (OpenTelemetry)
+
+The evaluation pipeline includes advanced observability using **OpenTelemetry**. Every evaluation query is tracked as an individual `Span`. 
+This allows you to export telemetry data to backends like **Jaeger, Prometheus, or Grafana** in production.
+
+**Features tracked per trace:**
+- Question & Expected Tool
+- Start & End execution times (Latency)
+- Accuracy (Pass/Fail)
+- Full stack traces of any mathematical or Python exceptions raised by the agent
+
+*(For local testing, the spans are printed directly to the console via `ConsoleSpanExporter`)*.

@@ -1,0 +1,842 @@
+[
+    {
+        "question": "Calculate the force for a mass of 44.28 kg accelerating at 6.05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 267.894,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 267.894) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 89.78 kg accelerating at 16.61 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1491.2458,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1491.2458) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 18.11 kg accelerating at 2.78 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 50.3458,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 50.3458) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 41.4 kg accelerating at 4.0 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 165.6,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 165.6) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 83.78 kg accelerating at 4.65 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 389.577,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 389.577) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 11.61 kg accelerating at 19.17 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 222.5637,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 222.5637) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 75.18 kg accelerating at 10.62 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 798.4116,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 798.4116) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 41.64 kg accelerating at 6.69 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 278.5716,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 278.5716) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 20.71 kg accelerating at 4.4 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 91.124,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 91.124) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 80.26 kg accelerating at 15.24 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1223.1624,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1223.1624) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 90.8 kg accelerating at 13.72 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1245.776,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1245.776) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 96.42 kg accelerating at 17.27 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1665.1734,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1665.1734) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 75.46 kg accelerating at 10.99 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 829.3054,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 829.3054) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 30.41 kg accelerating at 17.04 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 518.1864,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 518.1864) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 26.47 kg accelerating at 11.16 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 295.4052,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 295.4052) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 84.1 kg accelerating at 14.53 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1221.973,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1221.973) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 53.15 kg accelerating at 1.9 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 100.985,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 100.985) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 9.71 kg accelerating at 19.65 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 190.8015,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 190.8015) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 94.98 kg accelerating at 14.55 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1381.959,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1381.959) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 76.88 kg accelerating at 11.68 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 897.9584,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 897.9584) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 8.28 kg accelerating at 4.07 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 33.6996,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 33.6996) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 39.77 kg accelerating at 9.06 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 360.3162,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 360.3162) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 40.84 kg accelerating at 1.54 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 62.8936,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 62.8936) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 95.07 kg accelerating at 16.93 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1609.5351,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1609.5351) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 31.86 kg accelerating at 18.48 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 588.7728,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 588.7728) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 28.4 kg accelerating at 13.27 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 376.868,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 376.868) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 94.96 kg accelerating at 2.4 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 227.904,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 227.904) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 7.73 kg accelerating at 19.27 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 148.9571,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 148.9571) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 70.68 kg accelerating at 13.56 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 958.4208,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 958.4208) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 52.86 kg accelerating at 9.88 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 522.2568,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 522.2568) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 81.49 kg accelerating at 17.27 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1407.3323,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 1407.3323) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 15.58 kg accelerating at 17.13 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 266.8854,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 266.8854) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 75.1 kg accelerating at 5.27 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 395.777,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 395.777) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 52.75 kg accelerating at 6.64 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 350.26,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 350.26) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 32.52 kg accelerating at 2.85 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 92.682,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 92.682) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 71.71 kg accelerating at 5.7 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 408.747,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 408.747) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 24.17 kg accelerating at 19.75 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 477.3575,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 477.3575) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 84.15 kg accelerating at 6.22 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 523.413,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 523.413) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 4.67 kg accelerating at 18.4 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 85.928,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 85.928) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 13.7 kg accelerating at 15.4 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 210.98,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 210.98) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 65.51 kg accelerating at 6.93 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 453.9843,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 453.9843) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 72.28 kg accelerating at 1.77 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 127.9356,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 127.9356) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 12.97 kg accelerating at 2.49 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 32.2953,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 32.2953) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 29.0 kg accelerating at 9.49 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 275.21,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 275.21) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 35.31 kg accelerating at 11.11 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 392.2941,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 392.2941) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 14.48 kg accelerating at 4.4 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 63.712,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 63.712) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 1.6 kg accelerating at 10.0 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 16.0,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 16.0) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 87.39 kg accelerating at 1.04 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 90.8856,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 90.8856) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 15.02 kg accelerating at 15.56 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 233.7112,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 233.7112) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a mass of 46.55 kg accelerating at 13.34 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 620.977,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 620.977) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 453.25 N is applied over an area of 4.37 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 103.7185,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 103.7185) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 774.38 N is applied over an area of 3.9 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 198.559,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 198.559) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 209.38 N is applied over an area of 4.05 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 51.6988,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 51.6988) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 694.66 N is applied over an area of 5.36 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 129.6007,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 129.6007) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 732.59 N is applied over an area of 0.14 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 5232.7857,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 5232.7857) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 189.3 N is applied over an area of 8.47 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 22.3495,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 22.3495) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 474.32 N is applied over an area of 5.14 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 92.2802,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 92.2802) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 191.01 N is applied over an area of 6.14 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 31.1091,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 31.1091) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 496.19 N is applied over an area of 8.16 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 60.8076,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 60.8076) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 920.73 N is applied over an area of 6.95 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 132.4791,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 132.4791) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 262.0 N is applied over an area of 4.27 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 61.3583,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 61.3583) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 291.58 N is applied over an area of 4.14 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 70.43,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 70.43) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 76.32 N is applied over an area of 8.55 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 8.9263,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 8.9263) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 632.79 N is applied over an area of 4.48 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 141.2478,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 141.2478) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 556.96 N is applied over an area of 4.27 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 130.4356,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 130.4356) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 630.02 N is applied over an area of 3.41 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 184.7566,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 184.7566) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 301.8 N is applied over an area of 9.64 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 31.3071,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 31.3071) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 797.18 N is applied over an area of 9.79 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 81.428,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 81.428) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 634.69 N is applied over an area of 6.32 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 100.4256,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 100.4256) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 488.76 N is applied over an area of 6.91 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 70.7323,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 70.7323) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 834.27 N is applied over an area of 4.52 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 184.573,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 184.573) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 263.72 N is applied over an area of 1.72 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 153.3256,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 153.3256) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 901.96 N is applied over an area of 8.32 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 108.4087,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 108.4087) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 251.83 N is applied over an area of 8.76 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 28.7477,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 28.7477) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 754.23 N is applied over an area of 9.39 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 80.3227,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 80.3227) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 820.95 N is applied over an area of 9.1 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 90.2143,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 90.2143) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 349.48 N is applied over an area of 3.21 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 108.8723,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 108.8723) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 302.97 N is applied over an area of 6.29 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 48.1669,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 48.1669) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 14.52 N is applied over an area of 0.44 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 33.0,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 33.0) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 493.39 N is applied over an area of 0.57 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 865.5965,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 865.5965) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 502.18 N is applied over an area of 4.69 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 107.0746,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 107.0746) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 298.77 N is applied over an area of 2.47 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 120.9595,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 120.9595) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 354.67 N is applied over an area of 9.59 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 36.9833,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 36.9833) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 894.45 N is applied over an area of 8.22 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 108.8139,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 108.8139) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 985.57 N is applied over an area of 7.47 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 131.9371,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 131.9371) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 852.48 N is applied over an area of 3.67 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 232.2834,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 232.2834) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 552.56 N is applied over an area of 6.26 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 88.2684,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 88.2684) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 765.83 N is applied over an area of 0.27 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 2836.4074,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 2836.4074) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 283.1 N is applied over an area of 7.49 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 37.7971,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 37.7971) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 696.48 N is applied over an area of 2.08 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 334.8462,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 334.8462) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 355.02 N is applied over an area of 8.5 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 41.7671,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 41.7671) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 543.73 N is applied over an area of 7.58 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 71.7322,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 71.7322) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 780.37 N is applied over an area of 3.05 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 255.859,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 255.859) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 936.46 N is applied over an area of 9.47 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 98.887,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 98.887) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 163.79 N is applied over an area of 3.9 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 41.9974,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 41.9974) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 763.88 N is applied over an area of 8.44 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 90.5071,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 90.5071) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 359.48 N is applied over an area of 7.72 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 46.5648,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 46.5648) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 995.03 N is applied over an area of 8.83 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 112.6874,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 112.6874) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 361.68 N is applied over an area of 6.56 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 55.1341,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 55.1341) < 0.01"
+    },
+    {
+        "question": "Find the normal stress if a force of 789.52 N is applied over an area of 4.54 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": 173.9031,
+        "type": "normal",
+        "validation_fn": "lambda r: abs(r - 173.9031) < 0.01"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Calculate the force for a tiny mass of 1e-05 kg accelerating at 1e-05 m/s^2.",
+        "tool": "calculate_force",
+        "expected_result": 1.0000000000000002e-10,
+        "type": "edge",
+        "validation_fn": "lambda r: abs(r - 1.0000000000000002e-10) < 1e-8"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    },
+    {
+        "question": "Find the normal stress if a force of 500 N is applied over an area of 0 m^2.",
+        "tool": "calculate_stress",
+        "expected_result": null,
+        "type": "invalid",
+        "validation_fn": "lambda r: r is None or 'error' in str(r).lower() or 'cannot be zero' in str(r).lower()"
+    }
+]

@@ -1,0 +1,8 @@
+{
+  "total": 20,
+  "success": 19,
+  "failed_execution": 1,
+  "tool_selection_correct": 14,
+  "accuracy_correct": 14,
+  "average_latency": 18.38984469175339
+}

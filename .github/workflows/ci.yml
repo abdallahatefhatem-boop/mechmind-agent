@@ -45,5 +45,7 @@ jobs:
     - name: Run Tests
       env:
         DB_URI: postgresql://postgres:postgres@localhost:5432/engineering_db
+        GOOGLE_API_KEY: dummy_google_api_key_for_tests
+        GROQ_API_KEY: dummy_groq_api_key_for_tests
       run: |
         PYTHONPATH=. uv run pytest tests/ -v
